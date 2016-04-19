@@ -44,7 +44,7 @@ public class MainTabActivity extends TabActivity {
         Intent intent = new Intent(MainTabActivity.this, MeActivity.class);
         tabSpec.setContent(intent);
         //自定义设置标签（View）内容
-        tabSpec.setIndicator(getTab1View("我的豆瓣", R.drawable.tab_main_nav_me_selector));//tab1(我的豆瓣)
+        tabSpec.setIndicator(getTab1View("我的", R.drawable.tab_main_nav_me_selector));//tab1(我的豆瓣)
         return tabSpec;
     }
 

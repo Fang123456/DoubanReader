@@ -26,8 +26,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a63c8981-1f6a-4582-a143-9e6a986131c9" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/豆瓣2.0/src/com/k/douban/MainTabActivity.java" afterPath="$PROJECT_DIR$/豆瓣2.0/src/com/k/douban/MainTabActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/豆瓣2.0/src/com/k/douban/util/NetUtil.java" afterPath="$PROJECT_DIR$/豆瓣2.0/src/com/k/douban/util/NetUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/豆瓣2.0/src/douban/playground/PlayGround.java" afterPath="$PROJECT_DIR$/豆瓣2.0/src/douban/playground/PlayGround.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/豆瓣2.0/src/com/k/douban/NewBookActivity.java" afterPath="$PROJECT_DIR$/豆瓣2.0/src/com/k/douban/NewBookActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/豆瓣2.0/res/values/config.xml" afterPath="$PROJECT_DIR$/豆瓣2.0/res/values/config.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="DoubanReader.iws" />
@@ -55,42 +57,31 @@
         <entry file="file://$PROJECT_DIR$/豆瓣2.0/src/com/k/douban/MainTabActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="43" column="67" selection-start-line="43" selection-start-column="57" selection-end-line="43" selection-end-column="67" />
+              <caret line="57" column="35" selection-start-line="57" selection-start-column="35" selection-end-line="57" selection-end-column="35" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MeActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/豆瓣2.0/src/com/k/douban/MeActivity.java">
+      <file leaf-file-name="NewBookActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/豆瓣2.0/src/com/k/douban/NewBookActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="81" column="59" selection-start-line="81" selection-start-column="44" selection-end-line="81" selection-end-column="59" />
+            <state vertical-scroll-proportion="-2.485294">
+              <caret line="178" column="5" selection-start-line="178" selection-start-column="5" selection-end-line="178" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginInActivity.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/豆瓣2.0/src/com/k/douban/LoginInActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.54587156">
-              <caret line="198" column="49" selection-start-line="198" selection-start-column="18" selection-end-line="198" selection-end-column="18" />
-              <folding>
-                <element signature="e#6531#7419#0" expanded="true" />
-                <element signature="e#7418#7419#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NetUtil.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="NetUtil.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/豆瓣2.0/src/com/k/douban/util/NetUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="99" column="53" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.7325843">
+              <caret line="338" column="73" selection-start-line="338" selection-start-column="17" selection-end-line="338" selection-end-column="17" />
               <folding>
+                <element signature="imports" expanded="true" />
                 <element signature="e#3809#3839#0" expanded="false" />
+                <element signature="e#12581#12635#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -100,7 +91,7 @@
         <entry file="file://$PROJECT_DIR$/豆瓣2.0/src/douban/playground/PlayGround.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="243" column="59" selection-start-line="243" selection-start-column="35" selection-end-line="243" selection-end-column="59" />
+              <caret line="415" column="47" selection-start-line="415" selection-start-column="47" selection-end-line="415" selection-end-column="47" />
               <folding>
                 <element signature="e#5196#5198#0" expanded="false" />
               </folding>
@@ -108,21 +99,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OAuthDoubanProvider.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/豆瓣2.0/src/douban/provider/OAuthDoubanProvider.java">
+      <file leaf-file-name="config.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/豆瓣2.0/res/values/config.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="151" column="49" selection-start-line="151" selection-start-column="30" selection-end-line="151" selection-end-column="49" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Converters.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/豆瓣2.0/src/douban/utils/Converters.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="97" column="5" selection-start-line="97" selection-start-column="5" selection-end-line="97" selection-end-column="5" />
+              <caret line="4" column="36" selection-start-line="4" selection-start-column="36" selection-end-line="4" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -142,7 +123,10 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/豆瓣2.0/src/douban/playground/PlayGround.java" />
+        <option value="$PROJECT_DIR$/豆瓣2.0/src/com/k/douban/MainTabActivity.java" />
         <option value="$PROJECT_DIR$/豆瓣2.0/src/com/k/douban/util/NetUtil.java" />
+        <option value="$PROJECT_DIR$/豆瓣2.0/res/values/config.xml" />
+        <option value="$PROJECT_DIR$/豆瓣2.0/src/com/k/douban/NewBookActivity.java" />
       </list>
     </option>
   </component>
@@ -188,6 +172,42 @@
               <option name="myItemId" value="DoubanReader" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; Android API 19 Platform &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DoubanReader" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; Android API 19 Platform &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DoubanReader" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -209,73 +229,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="douban" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DoubanReader" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="豆瓣2.0" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="douban" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="playground" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DoubanReader" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="豆瓣2.0" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="douban" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DoubanReader" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="豆瓣2.0" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="douban" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="util" />
+              <option name="myItemId" value="libs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -508,6 +462,7 @@
     </configuration>
     <configuration default="true" type="JarApplication" factoryName="JAR Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="JAR_PATH" value="$PROJECT_DIR$/豆瓣2.0/libs/jericho-html-3.1.jar" />
       <envs />
       <method />
     </configuration>
@@ -602,12 +557,12 @@
       <created>1461029128441</created>
       <option name="number" value="Default" />
       <updated>1461029128441</updated>
-      <workItem from="1461029131534" duration="3041000" />
+      <workItem from="1461029131534" duration="14504000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3041000" />
+    <option name="totallyTimeSpent" value="14504000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="0" width="1370" height="745" extended-state="1" />
@@ -623,9 +578,9 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32517484" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17832167" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16258742" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20430107" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.140553" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Memory Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -669,14 +624,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/豆瓣2.0/src/com/k/douban/MainTabActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="43" column="67" selection-start-line="43" selection-start-column="57" selection-end-line="43" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/豆瓣2.0/src/com/k/douban/MeActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -685,19 +632,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/豆瓣2.0/src/douban/playground/PlayGround.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="243" column="59" selection-start-line="243" selection-start-column="35" selection-end-line="243" selection-end-column="59" />
-          <folding>
-            <element signature="e#5196#5198#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/豆瓣2.0/src/douban/provider/OAuthDoubanProvider.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.6353211">
           <caret line="151" column="49" selection-start-line="151" selection-start-column="30" selection-end-line="151" selection-end-column="49" />
           <folding />
         </state>
@@ -705,7 +642,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/豆瓣2.0/src/douban/utils/Converters.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.38302752">
           <caret line="97" column="5" selection-start-line="97" selection-start-column="5" selection-end-line="97" selection-end-column="5" />
           <folding />
         </state>
@@ -722,23 +659,83 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/豆瓣2.0/src/com/k/douban/util/NetUtil.java">
+    <entry file="file://$PROJECT_DIR$/豆瓣2.0/src/com/k/douban/LoginInActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="99" column="53" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.39449543">
+          <caret line="126" column="33" selection-start-line="126" selection-start-column="7" selection-end-line="126" selection-end-column="7" />
           <folding>
-            <element signature="e#3809#3839#0" expanded="false" />
+            <element signature="e#6531#7419#0" expanded="true" />
+            <element signature="e#7418#7419#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/豆瓣2.0/src/com/k/douban/LoginInActivity.java">
+    <entry file="jar://D:/Software/study/x64/SDK_22.3_64/sdk/sdk/platforms/android-19/android.jar!/java/net/URLConnection.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.54587156">
-          <caret line="198" column="49" selection-start-line="198" selection-start-column="18" selection-end-line="198" selection-end-column="18" />
+        <state vertical-scroll-proportion="-4.053221">
+          <caret line="17" column="22" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/豆瓣2.0/src/com/k/douban/MainTabActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="57" column="35" selection-start-line="57" selection-start-column="35" selection-end-line="57" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/豆瓣2.0/libs/jericho-html-3.1.jar!/net/htmlparser/jericho/Source.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.3333334">
+          <caret line="5" column="22" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/豆瓣2.0/res/values/config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="36" selection-start-line="4" selection-start-column="36" selection-end-line="4" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/豆瓣2.0/src/douban/playground/PlayGround.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="415" column="47" selection-start-line="415" selection-start-column="47" selection-end-line="415" selection-end-column="47" />
           <folding>
-            <element signature="e#6531#7419#0" expanded="true" />
-            <element signature="e#7418#7419#0" expanded="true" />
+            <element signature="e#5196#5198#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Software/study/x64/SDK_22.3_64/sdk/sdk/platforms/android-19/android.jar!/android/graphics/Bitmap.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.31058824">
+          <caret line="17" column="19" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/豆瓣2.0/src/com/k/douban/NewBookActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.485294">
+          <caret line="178" column="5" selection-start-line="178" selection-start-column="5" selection-end-line="178" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/豆瓣2.0/src/com/k/douban/util/NetUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7325843">
+          <caret line="338" column="73" selection-start-line="338" selection-start-column="17" selection-end-line="338" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3809#3839#0" expanded="false" />
+            <element signature="e#12581#12635#0" expanded="true" />
           </folding>
         </state>
       </provider>

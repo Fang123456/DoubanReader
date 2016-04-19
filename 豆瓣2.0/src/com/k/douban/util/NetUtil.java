@@ -300,15 +300,16 @@ public class NetUtil {
      * 获取新书数据 */
     public static List<NewBook> getNewBooks(Context context ) throws Exception{
         String path =context.getResources().getString(R.string.newbookpath);
+        System.out.println("获取新书数据");
         URL url = new URL(path);
         URLConnection conn = url.openConnection();
         Source source = new Source(conn);
         List<NewBook> newbooks = new ArrayList<NewBook>();
         List<Element>  lielements  = source.getAllElements("li");
-        System.out.println(lielements.size());
+        System.out.println("lielements: " + lielements.size());
         for(Element lielement : lielements){
             List<Element> childrenlists = lielement.getChildElements();
-            if(childrenlists.size()==2){
+            if(childrenlists.size() == 2){
 
                 if("detail-frame".equals(childrenlists.get(0).getAttributeValue("class"))){
                     NewBook newbook = new NewBook();

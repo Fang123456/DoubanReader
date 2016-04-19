@@ -62,6 +62,7 @@ public class NewBookActivity extends BaseActivity implements AdapterView.OnItemC
 			protected Boolean doInBackground(Void... params) {
 
 				try {
+					System.out.println("调用book的方法");
 					newbooks = NetUtil.getNewBooks(getApplicationContext());
 					return true;
 				} catch (Exception e) {
