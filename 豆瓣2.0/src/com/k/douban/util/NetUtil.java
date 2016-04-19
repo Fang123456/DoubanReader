@@ -71,9 +71,7 @@ public class NetUtil {
         editor1.putString("username", "2797037168@qq.com");//由于无法手动拿到code，所以作弊一下
         editor1.putString("userpwd", "111");//由于无法手动拿到code，所以作弊一下
         editor1.commit();
-        if (name.equals("2797037168@qq.com") || pwd.equals("111")) {
-            return true;
-        }
+
 
 
         System.out.println("调用NETUtil的login方法");
@@ -95,8 +93,12 @@ public class NetUtil {
         editor.putString("userid", accessToken.getDoubanUserId());
         editor.commit();
 
+        if (name.equals("2797037168@qq.com") && pwd.equals("111")) {
+            return true;
+        }
 
-        return true;
+
+        return false;
 //        //豆瓣申请的apiKey和secret
 //        if (name.equals("2797037168@qq.com")&&pwd.equals("2797037168liufang")&&context.getResources().getString(R.string.access_token).equals("a79a9a020803df5df6cfce06180b9e17")){
 //            return true;

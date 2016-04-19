@@ -239,7 +239,7 @@ public class PlayGround {
 //            //手工   登录授权获取code
 
             System.out.println(url);
-            String code = "d6a7461d08da1497"; //这是最近一次的code，需要手动获取。
+            String code = "e0d8ec8f2e1009b5"; //这是最近一次的code，需要手动获取。
 
             AccessToken at = oauth.tradeAccessTokenWithCode(code);
             System.out.println("at : " + at.getAccessToken());
@@ -265,7 +265,7 @@ public class PlayGround {
             oauth.addScope(RequestGrantScope.BASIC_COMMON_SCOPE).addScope(RequestGrantScope.SHUO_READ_SCOPE).addScope(RequestGrantScope.SHUO_WRITE_SCOPE)
                     .addScope(RequestGrantScope.BASIC_NOTE_SCOPE).addScope(RequestGrantScope.BOOK_READ_SCOPE).addScope(RequestGrantScope.EVENT_READ_SCOPE).addScope(RequestGrantScope.EVENT_WRITE_SCOPE)
                     .addScope(RequestGrantScope.MAIL_READ_SCOPE).addScope(RequestGrantScope.MAIL_WRITE_SCOPE).addScope(RequestGrantScope.MOVIE_READ_SCOPE).addScope(RequestGrantScope.MUSIC_READ_SCOPE);
-            oauth.setRedirectUrl("http://www.dongxuexidu.com");
+            oauth.setRedirectUrl("http://myapp.com/callback");
             BrowserLauncher.openURL(oauth.getGetCodeRedirectUrl());
             System.out.println(oauth.getGetCodeRedirectUrl());
             System.out.print("Put the code you got here.[Enter]:");
