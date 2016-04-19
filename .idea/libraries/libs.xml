@@ -1,0 +1,24 @@
+<component name="libraryTable">
+  <library name="libs">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/豆瓣2.0/libs/google-http-client-1.10.3-beta.jar!/" />
+      <root url="jar://$PROJECT_DIR$/豆瓣2.0/libs/guava-14.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/豆瓣2.0/libs/gson-2.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/豆瓣2.0/libs/commons-lang-2.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/豆瓣2.0/libs/commons-beanutils-1.8.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/豆瓣2.0/libs/gdata-client-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/豆瓣2.0/libs/json-lib-2.4-jdk15.jar!/" />
+      <root url="jar://$PROJECT_DIR$/豆瓣2.0/libs/protobuf-java-2.4.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/豆瓣2.0/libs/ezmorph-1.0.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/豆瓣2.0/libs/jackson-core-2.7.0-rc1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/豆瓣2.0/libs/httpcore-4.4.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/豆瓣2.0/libs/kxml2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/豆瓣2.0/libs/jackson-core-asl-1.9.13.jar!/" />
+      <root url="jar://$PROJECT_DIR$/豆瓣2.0/libs/jericho-html-3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/豆瓣2.0/libs/gdata-core-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/豆瓣2.0/libs/httpclient-4.5.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
