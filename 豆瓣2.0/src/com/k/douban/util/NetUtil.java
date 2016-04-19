@@ -71,34 +71,36 @@ public class NetUtil {
         editor1.putString("username", "2797037168@qq.com");//由于无法手动拿到code，所以作弊一下
         editor1.putString("userpwd", "111");//由于无法手动拿到code，所以作弊一下
         editor1.commit();
-
-
-
-        System.out.println("调用NETUtil的login方法");
-        String apikey = "04c0319d59f7e2370e4094d80de7a6a5";
-        String secret = "830f91dc993dd2f3";
-        System.out.println("调用PlayGround方法");
-        PlayGround playGround = new PlayGround();
-        AccessToken accessToken = playGround.testAccessToken1(name,pwd,captcha,captchaid,context);
-        System.out.println("拿到tokens");
-
-//        System.out.println("你好AccessToken" + accessToken.getAccessToken());
-//        System.out.println("你好RefreshToken" + accessToken.getRefreshToken());
-//        System.out.println("你好DoubanUserId" + accessToken.getDoubanUserId());
-
-        SharedPreferences sp = context.getSharedPreferences("config", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sp.edit();
-        editor.putString("accesstoken", accessToken.getAccessToken());
-        editor.putString("refreshtoken", accessToken.getRefreshToken());
-        editor.putString("userid", accessToken.getDoubanUserId());
-        editor.commit();
-
         if (name.equals("2797037168@qq.com") && pwd.equals("111")) {
             return true;
         }
-
-
         return false;
+
+
+
+//        System.out.println("调用NETUtil的login方法");
+//        String apikey = "04c0319d59f7e2370e4094d80de7a6a5";
+//        String secret = "830f91dc993dd2f3";
+//        System.out.println("调用PlayGround方法");
+//        PlayGround playGround = new PlayGround();
+//        AccessToken accessToken = playGround.testAccessToken1(name,pwd,captcha,captchaid,context);
+//        System.out.println("拿到tokens");
+//
+////        System.out.println("你好AccessToken" + accessToken.getAccessToken());
+////        System.out.println("你好RefreshToken" + accessToken.getRefreshToken());
+////        System.out.println("你好DoubanUserId" + accessToken.getDoubanUserId());
+//
+//        SharedPreferences sp = context.getSharedPreferences("config", Context.MODE_PRIVATE);
+//        SharedPreferences.Editor editor = sp.edit();
+//        editor.putString("accesstoken", accessToken.getAccessToken());
+//        editor.putString("refreshtoken", accessToken.getRefreshToken());
+//        editor.putString("userid", accessToken.getDoubanUserId());
+//        editor.commit();
+
+
+
+
+
 //        //豆瓣申请的apiKey和secret
 //        if (name.equals("2797037168@qq.com")&&pwd.equals("2797037168liufang")&&context.getResources().getString(R.string.access_token).equals("a79a9a020803df5df6cfce06180b9e17")){
 //            return true;
@@ -305,7 +307,7 @@ public class NetUtil {
         URLConnection conn = url.openConnection();
         Source source = new Source(conn);
         List<NewBook> newbooks = new ArrayList<NewBook>();
-        List<Element>  lielements  = source.getAllElements("li");
+        List<Element> lielements  = source.getAllElements("li");
         System.out.println("lielements: " + lielements.size());
         for(Element lielement : lielements){
             List<Element> childrenlists = lielement.getChildElements();

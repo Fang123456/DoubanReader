@@ -16,6 +16,7 @@ import douban.model.shuo.DoubanShuoAttachementObj;
 import douban.model.shuo.DoubanShuoMediaObj;
 import douban.model.shuo.DoubanShuoStatusObj;
 import douban.model.shuo.DoubanShuoUserObj;
+import douban.model.subject.DoubanSubjectFeedObj;
 import douban.model.subject.DoubanSubjectObj;
 import douban.playground.service.DoubanBookMovieMusicServiceTest;
 import douban.provider.OAuthDoubanProvider;
@@ -58,19 +59,20 @@ public class PlayGround {
         String uid = "137280810";
 
 
-        testAccessToken();
+//        testAccessToken();
 
 
 //    testAtomParse () ;
 //    testGetDoubanShuoUser();
 //    testFollowUser() ;
 //    testGetBookInfo();
-//        DoubanBookMovieMusicServiceTest doubanBookMovieMusicServiceTest = new DoubanBookMovieMusicServiceTest();
-//        try {
-//            doubanBookMovieMusicServiceTest.testGetBookInfoById();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+        DoubanBookMovieMusicServiceTest doubanBookMovieMusicServiceTest = new DoubanBookMovieMusicServiceTest();
+        try {
+            DoubanSubjectFeedObj doubanSubjectFeedObj = doubanBookMovieMusicServiceTest.testSearchBook_String_String("你");
+            System.out.println("DoubanSubjectFeedObj" + doubanSubjectFeedObj);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
     }
@@ -239,7 +241,7 @@ public class PlayGround {
 //            //手工   登录授权获取code
 
             System.out.println(url);
-            String code = "e0d8ec8f2e1009b5"; //这是最近一次的code，需要手动获取。
+            String code = "699ee0ada6c35ca2"; //这是最近一次的code，需要手动获取。
 
             AccessToken at = oauth.tradeAccessTokenWithCode(code);
             System.out.println("at : " + at.getAccessToken());

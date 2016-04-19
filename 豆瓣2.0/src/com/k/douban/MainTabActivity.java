@@ -1,6 +1,5 @@
 package com.k.douban;
 
-import android.app.Activity;
 import android.app.TabActivity;
 import android.content.Context;
 import android.content.Intent;
@@ -28,12 +27,15 @@ public class MainTabActivity extends TabActivity {
         inflater = inflater.from(this);//初始化填充器
         mtabHost = (TabHost) findViewById(android.R.id.tabhost);
         mtabHost.setup();   //初始化tabHost，并填充tabs
-        mtabHost.addTab(tab1Spec());//我的豆瓣
+
+
+//        mtabHost.addTab(tab3Spec());//书评
+
+        mtabHost.addTab(tab5Spec());//关于---后期做成书架
         mtabHost.addTab(tab2Spec());//新书
-        mtabHost.addTab(tab3Spec());//书评
         mtabHost.addTab(tab4Spec());//搜索
-        mtabHost.addTab(tab5Spec());//关于
-        mtabHost.setCurrentTabByTag("three"); //设置默认目录
+        mtabHost.addTab(tab1Spec());//我的豆瓣
+        mtabHost.setCurrentTabByTag("five"); //设置默认目录
     }
 
 

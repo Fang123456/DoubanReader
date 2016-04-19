@@ -38,9 +38,10 @@ import douban.playground.service.DoubanBookMovieMusicServiceTest;
 import douban.playground.service.DoubanCollectionServiceTest;
 
 public class SearchActivity extends BaseActivity implements OnItemClickListener {
+    private String key = "你好";
     private ListView subjectlist;
     private SharedPreferences sharedPreferences;
-    private ImageButton  back_button;
+    private ImageButton back_button;
     MyReadAdapter adapter;
     // Map<String,Bitmap> iconCache;
     Map<String, SoftReference<Bitmap>> iconCache;
@@ -52,22 +53,25 @@ public class SearchActivity extends BaseActivity implements OnItemClickListener 
     KillReceiver receiver ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.subject);
+//        setContentView(R.layout.subject);
+        setContentView(R.layout.search_content);
         super.onCreate(savedInstanceState);
         startindex = 1;
         count = 5;
         // 初始化内存缓存
         iconCache = new HashMap<String, SoftReference<Bitmap>>();
-
-        back_button= (ImageButton) findViewById(R.id.back_button);
+        back_button = (ImageButton) findViewById(R.id.back_button);
         back_button.setOnClickListener(mGoBack);
+
 
     }
 
     @Override
     public void setupView() {
+        System.out.println("setupView()");
         mRelativeLoading = (RelativeLayout) this.findViewById(R.id.loading);
-        subjectlist = (ListView) this.findViewById(R.id.subjectlist);
+//        subjectlist = (ListView) this.findViewById(R.id.subjectlist);
+        subjectlist = (ListView) this.findViewById(R.id.list);
         filter = new IntentFilter();
         filter.addAction("kill_activity_action");
         receiver = new KillReceiver();
@@ -117,11 +121,13 @@ public class SearchActivity extends BaseActivity implements OnItemClickListener 
 
     @Override
     public void fillData() {
+        System.out.println("fillData()");
         // 通过异步任务 获取数据 然后显示到界面上
         new AsyncTask<Void, Void, List<Book>>() {
 
             @Override
             protected void onPreExecute() {
+                System.out.println("onPreExecute()");
                 showLoading();
                 isloading = true;
                 super.onPreExecute();
@@ -129,6 +135,7 @@ public class SearchActivity extends BaseActivity implements OnItemClickListener 
 
             @Override
             protected void onPostExecute(List<Book> result) {
+                System.out.println("onPostExecute(List<Book> result)");
                 hideLoading();
                 super.onPostExecute(result);
                 if (result != null) {
@@ -150,6 +157,7 @@ public class SearchActivity extends BaseActivity implements OnItemClickListener 
 
             @Override
             protected List<Book> doInBackground(Void... params) {
+                System.out.println("doInBackground(Void... params)");
                 //拿到book信息
                // DoubanCollectionServiceTest doubanCollectionServiceTest=new DoubanCollectionServiceTest();
                 DoubanBookMovieMusicServiceTest doubanBookMovieMusicServiceTest=new DoubanBookMovieMusicServiceTest();
@@ -158,19 +166,23 @@ public class SearchActivity extends BaseActivity implements OnItemClickListener 
                     String userid=sharedPreferences.getString("userid", "");
                     List<Book> Bookes = new ArrayList<Book>();
                     //DoubanCollectionFeedObj result1=doubanCollectionServiceTest.testGetUsersCollection_8args(startindex, count, userid);
-                    String key="c语言";
+//                    String key="c语言";
+                    System.out.println("開始搜索");
                     DoubanSubjectFeedObj result1=doubanBookMovieMusicServiceTest.testSearchBook_String_String(key);
                     for (DoubanSubjectObj col : result1.getSubjects()) {
                         Book Book = new Book();
                         String title=col.getTitle();
+                        System.out.println("title----------------------" + title);
                         //String updated=col.getUpdateTime();
                         String updated="2015-12-12";
 
                         String subjectUrl=col.getLinks().get(1).getHref();
 //						System.out.println("subjectUrl:"+subjectUrl);
-                        int start = subjectUrl.lastIndexOf("/")+1;
-                        int end=subjectUrl.length();
-                        String subjectId = subjectUrl.substring(start, end);
+                        String[] url = subjectUrl.split("/");
+                        String subjectId = url[4];
+//                        int start = subjectUrl.lastIndexOf("/")+1;
+//                        int end=subjectUrl.length();
+//                        String subjectId = subjectUrl.substring(start, end);
                         String summary=col.getSummary();
 
                         try {
