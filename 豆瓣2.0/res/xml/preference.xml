@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="设置选项" >
+
+        <CheckBoxPreference
+            android:enabled="true"
+            android:key="canloadicon"
+            android:summary="网络状态下不下载图片将减少数据量"
+            android:summaryOff="不下载图片"
+            android:summaryOn="下载图片"
+            android:title="是否下载图片" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.k.douban"
+          android:versionCode="1"
+          android:versionName="1.0">
+
+    <uses-sdk android:minSdkVersion="19"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+
+
+    <application
+            android:icon="@drawable/ic_launcher"
+            android:label="@string/app_name"
+            android:name="MyApp">
+        <activity
+                android:label="@string/app_name"
+                android:name=".SplashActivity"
+                android:theme="@android:style/Theme.NoTitleBar" >
+            <intent-filter >
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+                android:label="@string/my_douban"
+                android:name=".MainTabActivity" >
+        </activity>
+        <activity
+                android:label="@string/my_douban"
+                android:name=".MeActivity" >
+        </activity>
+        <activity
+                android:label="@string/login"
+                android:name=".LoginInActivity"
+                android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+                android:label="@string/my_info"
+                android:name=".MyInfoActivity"
+                android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+                android:label="@string/my_info"
+                android:name=".TestActivity1"
+                android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+                android:label="@string/my_book"
+                android:name=".MyReadActivity"
+                android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+                android:label="@string/my_note"
+                android:name=".MyNoteActivity"
+                android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+                android:label="@string/new_note"
+                android:name=".NewNoteActivity"
+                android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+                android:label="@string/new_book"
+                android:name=".NewBookActivity"
+                android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+                android:label="@string/setting"
+                android:name=".SettingActivity" >
+        </activity>
+        <activity
+                android:label="@string/book_detail"
+                android:name=".BookDetailActivity"
+                android:theme="@style/floatwindow" >
+        </activity>
+        <activity
+                android:label="@string/book_detail"
+                android:name=".GridViewActivity"
+                android:theme="@android:style/Theme.NoTitleBar">
+        </activity>
+        <activity
+                android:label="@string/about"
+                android:name=".AboutActivity"
+                android:theme="@android:style/Theme.NoTitleBar">
+        </activity>
+        <activity
+                android:label="搜索"
+                android:name=".SearchActivity"
+                android:theme="@android:style/Theme.NoTitleBar">
+        </activity>
+    </application>
+
+</manifest>

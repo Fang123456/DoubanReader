@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="loginurl">http://www.douban.com/accounts/login</string>
+    <string name="captchaurl">http://www.douban.com/misc/captcha?id=</string>
+    <string name="newbookpath">http://book.douban.com/latest</string>
+
+    
+</resources>
