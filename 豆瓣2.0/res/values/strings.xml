@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">豆瓣2.0</string>
+    <string name="app_name">豆瓣读书</string>
     <string name="my_douban">我的豆瓣</string>
     <string name="login">用户登陆</string>
     <string name="app_desc">(豆瓣客户端)</string>
@@ -19,6 +19,7 @@
     <string name="search">搜索</string>
     <string name="search_hint">书名</string>
     <string name="about">关于</string>
+    <string name="hello">Hello World, ReaderActivity!</string>
 
 
 </resources>

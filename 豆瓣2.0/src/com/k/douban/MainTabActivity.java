@@ -24,140 +24,141 @@ public class MainTabActivity extends TabActivity {
         //requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.main_tab);
 
-        inflater = inflater.from(this);//åˆå§‹åŒ–å¡«å……å™¨
+        inflater = inflater.from(this);//³õÊ¼»¯Ìî³äÆ÷
         mtabHost = (TabHost) findViewById(android.R.id.tabhost);
-        mtabHost.setup();   //åˆå§‹åŒ–tabHostï¼Œå¹¶å¡«å……tabs
+        mtabHost.setup();   //³õÊ¼»¯tabHost£¬²¢Ìî³ätabs
 
 
-//        mtabHost.addTab(tab3Spec());//ä¹¦è¯„
+//        mtabHost.addTab(tab3Spec());//ÊéÆÀ
 
-        mtabHost.addTab(tab5Spec());//å…³äº---åæœŸåšæˆä¹¦æ¶
-        mtabHost.addTab(tab2Spec());//æ–°ä¹¦
-        mtabHost.addTab(tab4Spec());//æœç´¢
-        mtabHost.addTab(tab1Spec());//æˆ‘çš„è±†ç“£
-        mtabHost.setCurrentTabByTag("five"); //è®¾ç½®é»˜è®¤ç›®å½•
+        mtabHost.addTab(tab5Spec());//¹ØÓÚ---ºóÆÚ×ö³ÉÊé¼Ü
+        mtabHost.addTab(tab2Spec());//ĞÂÊé
+        mtabHost.addTab(tab4Spec());//ËÑË÷
+        mtabHost.addTab(tab1Spec());//ÎÒµÄ¶¹°ê
+        mtabHost.setCurrentTabByTag("five"); //ÉèÖÃÄ¬ÈÏÄ¿Â¼
     }
 
 
     /*
-    * è®¾ç½®tab1çš„æ ‡ç­¾å’Œå†…å®¹*/
+    * ÉèÖÃtab1µÄ±êÇ©ºÍÄÚÈİ*/
     private TabHost.TabSpec tab1Spec() {
         TabHost.TabSpec tabSpec = mtabHost.newTabSpec("one");
         Intent intent = new Intent(MainTabActivity.this, MeActivity.class);
         tabSpec.setContent(intent);
-        //è‡ªå®šä¹‰è®¾ç½®æ ‡ç­¾ï¼ˆViewï¼‰å†…å®¹
-        tabSpec.setIndicator(getTab1View("æˆ‘çš„", R.drawable.tab_main_nav_me_selector));//tab1(æˆ‘çš„è±†ç“£)
+        //×Ô¶¨ÒåÉèÖÃ±êÇ©£¨View£©ÄÚÈİ
+        tabSpec.setIndicator(getTab1View("ÎÒµÄ", R.drawable.tab_main_nav_me_selector));//tab1(ÎÒµÄ¶¹°ê)
         return tabSpec;
     }
 
     /*
-    * è·å–tab1å¯¼èˆªæ ‡ç­¾çš„View*/
+    * »ñÈ¡tab1µ¼º½±êÇ©µÄView*/
     private View getTab1View(String tabTitle, int iconId) {
         View view = inflater.inflate(R.layout.tab_main_nav, null);
         ImageView iv_icon = (ImageView) view.findViewById(R.id.ivIcon);
         TextView  tv_title= (TextView) view.findViewById(R.id.tvTitle);
-        iv_icon.setImageResource(iconId);//tabNavçš„å›¾ç‰‡
+        iv_icon.setImageResource(iconId);//tabNavµÄÍ¼Æ¬
         tv_title.setText(tabTitle);
         return view;
     }
 
 
     /*
-     * è®¾ç½®tab2çš„æ ‡ç­¾å’Œå†…å®¹*/
+     * ÉèÖÃtab2µÄ±êÇ©ºÍÄÚÈİ*/
     private TabHost.TabSpec tab2Spec() {
         TabHost.TabSpec tabSpec = mtabHost.newTabSpec("two");
         Intent intent = new Intent(MainTabActivity.this, NewBookActivity.class);
         tabSpec.setContent(intent);
-        //è‡ªå®šä¹‰è®¾ç½®æ ‡ç­¾ï¼ˆViewï¼‰å†…å®¹
-        tabSpec.setIndicator(getTab2View("æ–°ä¹¦", R.drawable.tab_main_nav_home_selector));//tab2(æ–°ä¹¦)
+        //×Ô¶¨ÒåÉèÖÃ±êÇ©£¨View£©ÄÚÈİ
+        tabSpec.setIndicator(getTab2View("ĞÂÊé", R.drawable.tab_main_nav_home_selector));//tab2(ĞÂÊé)
         return tabSpec;
     }
 
     /*
-    * è·å–tab2å¯¼èˆªæ ‡ç­¾çš„View*/
+    * »ñÈ¡tab2µ¼º½±êÇ©µÄView*/
     private View getTab2View(String tabTitle, int iconId) {
         View view = inflater.inflate(R.layout.tab_main_nav, null);
         ImageView iv_icon = (ImageView) view.findViewById(R.id.ivIcon);
         iv_icon.setBackground(getResources().getDrawable(iconId));
-//        iv_icon.setImageResource(iconId);//tabNavçš„å›¾ç‰‡
+//        iv_icon.setImageResource(iconId);//tabNavµÄÍ¼Æ¬
         TextView  tv_title= (TextView) view.findViewById(R.id.tvTitle);
-        iv_icon.setImageResource(iconId);//tabNavçš„å›¾ç‰‡
+        iv_icon.setImageResource(iconId);//tabNavµÄÍ¼Æ¬
         tv_title.setText(tabTitle);
         return view;
     }
 
 
     /*
-     * è®¾ç½®tab3çš„æ ‡ç­¾å’Œå†…å®¹*/
+     * ÉèÖÃtab3µÄ±êÇ©ºÍÄÚÈİ*/
     private TabHost.TabSpec tab3Spec() {
         TabHost.TabSpec tabSpec = mtabHost.newTabSpec("three");
         Intent intent = new Intent(MainTabActivity.this, TestActivity1.class);
         tabSpec.setContent(intent);
-        //è‡ªå®šä¹‰è®¾ç½®æ ‡ç­¾ï¼ˆViewï¼‰å†…å®¹
-        tabSpec.setIndicator(getTab3View("ä¹¦è¯„", R.drawable.detail_comment_selected));//tab3(ä¹¦è¯„)
+        //×Ô¶¨ÒåÉèÖÃ±êÇ©£¨View£©ÄÚÈİ
+        tabSpec.setIndicator(getTab3View("ÊéÆÀ", R.drawable.detail_comment_selected));//tab3(ÊéÆÀ)
         return tabSpec;
     }
 
     /*
-    * è·å–tab3å¯¼èˆªæ ‡ç­¾çš„View*/
+    * »ñÈ¡tab3µ¼º½±êÇ©µÄView*/
     private View getTab3View(String tabTitle, int iconId) {
         View view = inflater.inflate(R.layout.tab_main_nav, null);
         ImageView iv_icon = (ImageView) view.findViewById(R.id.ivIcon);
         TextView  tv_title= (TextView) view.findViewById(R.id.tvTitle);
-        iv_icon.setImageResource(iconId);//tabNavçš„å›¾ç‰‡
+        iv_icon.setImageResource(iconId);//tabNavµÄÍ¼Æ¬
         tv_title.setText(tabTitle);
         return view;
     }
 
 
     /*
- * è®¾ç½®tab4çš„æ ‡ç­¾å’Œå†…å®¹*/
+ * ÉèÖÃtab4µÄ±êÇ©ºÍÄÚÈİ*/
     private TabHost.TabSpec tab4Spec() {
         TabHost.TabSpec tabSpec = mtabHost.newTabSpec("four");
 
         Intent intent = new Intent(MainTabActivity.this, SearchActivity.class);
 //        Intent intent = new Intent(MainTabActivity.this, TestActivity1.class);
         tabSpec.setContent(intent);
-        //è‡ªå®šä¹‰è®¾ç½®æ ‡ç­¾ï¼ˆViewï¼‰å†…å®¹
-        tabSpec.setIndicator(getTab4View("æœç´¢", R.drawable.tab_main_nav_search_selector));//tab4(æœç´¢)
+        //×Ô¶¨ÒåÉèÖÃ±êÇ©£¨View£©ÄÚÈİ
+        tabSpec.setIndicator(getTab4View("ËÑË÷", R.drawable.tab_main_nav_search_selector));//tab4(ËÑË÷)
         return tabSpec;
     }
 
     /*
-    * è·å–tab4å¯¼èˆªæ ‡ç­¾çš„View*/
+    * »ñÈ¡tab4µ¼º½±êÇ©µÄView*/
     private View getTab4View(String tabTitle, int iconId) {
         View view = inflater.inflate(R.layout.tab_main_nav, null);
         ImageView iv_icon = (ImageView) view.findViewById(R.id.ivIcon);
         TextView  tv_title= (TextView) view.findViewById(R.id.tvTitle);
-        iv_icon.setImageResource(iconId);//tabNavçš„å›¾ç‰‡
+        iv_icon.setImageResource(iconId);//tabNavµÄÍ¼Æ¬
         tv_title.setText(tabTitle);
         return view;
     }
 
 
     /*
-    * è®¾ç½®tab5çš„æ ‡ç­¾å’Œå†…å®¹*/
+    * ÉèÖÃtab5µÄ±êÇ©ºÍÄÚÈİ*/
     private TabHost.TabSpec tab5Spec() {
         TabHost.TabSpec tabSpec = mtabHost.newTabSpec("five");
-        Intent intent = new Intent(MainTabActivity.this, AboutActivity.class);
+//        Intent intent = new Intent(MainTabActivity.this, AboutActivity.class);
+        Intent intent = new Intent(MainTabActivity.this, BookshelfActivity.class);
         tabSpec.setContent(intent);
-        //è‡ªå®šä¹‰è®¾ç½®æ ‡ç­¾ï¼ˆViewï¼‰å†…å®¹
-        tabSpec.setIndicator(getTab5View("å…³äº", R.drawable.tab_main_nav_fav_selector));//tab5(å…³äº)
+        //×Ô¶¨ÒåÉèÖÃ±êÇ©£¨View£©ÄÚÈİ
+        tabSpec.setIndicator(getTab5View("Êé¼Ü", R.drawable.tab_main_nav_fav_selector));//tab5(¹ØÓÚ)
         return tabSpec;
     }
 
     /*
-    * è·å–tab5å¯¼èˆªæ ‡ç­¾çš„View*/
+    * »ñÈ¡tab5µ¼º½±êÇ©µÄView*/
     private View getTab5View(String tabTitle, int iconId) {
         View view = inflater.inflate(R.layout.tab_main_nav, null);
         ImageView iv_icon = (ImageView) view.findViewById(R.id.ivIcon);
         TextView  tv_title= (TextView) view.findViewById(R.id.tvTitle);
-        iv_icon.setImageResource(iconId);//tabNavçš„å›¾ç‰‡
+        iv_icon.setImageResource(iconId);//tabNavµÄÍ¼Æ¬
         tv_title.setText(tabTitle);
         return view;
     }
 
-    /**æ¸…é™¤èœå•*/
+    /**Çå³ı²Ëµ¥*/
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = new MenuInflater(this);
@@ -165,7 +166,7 @@ public class MainTabActivity extends TabActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    /**ç‚¹å‡»æ¸…é™¤èœå•ï¼Œæ¸…é™¤SharedPreferences*/
+    /**µã»÷Çå³ı²Ëµ¥£¬Çå³ıSharedPreferences*/
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -178,7 +179,7 @@ public class MainTabActivity extends TabActivity {
 //                editor.putString("userid", "");
 
 
-                //ç”±äºä¸èƒ½ç›´æ¥æ‹¿åˆ°codeï¼Œæ‰€ä»¥ä½œä¸€ä¸‹å¼Š
+                //ÓÉÓÚ²»ÄÜÖ±½ÓÄÃµ½code£¬ËùÒÔ×÷Ò»ÏÂ±×
                 editor.putString("username","");
                 editor.putString("userpwd","");
                 editor.commit();
@@ -190,7 +191,7 @@ public class MainTabActivity extends TabActivity {
 
 
     /**
-     * å®ç°æ»‘åŠ¨æ•ˆæœ*/
+     * ÊµÏÖ»¬¶¯Ğ§¹û*/
 
 
 }

@@ -32,15 +32,15 @@ public class SplashActivity extends Activity {
         versionNumber = (TextView) this.findViewById(R.id.versionNumber);
         versionNumber.setText(getVersion());
 
-        // åˆ¤æ–­å½“å‰ç½‘ç»œçŠ¶æ€æ˜¯å¦å¯ç”¨
+        // ÅĞ¶Ïµ±Ç°ÍøÂç×´Ì¬ÊÇ·ñ¿ÉÓÃ
         if(isNetWorkConnected()){
         //if(true){
-            //splash åšä¸€ä¸ªåŠ¨ç”»,è¿›å…¥ä¸»ç•Œé¢
+            //splash ×öÒ»¸ö¶¯»­,½øÈëÖ÷½çÃæ
             AlphaAnimation aa = new AlphaAnimation(0.5f, 1.0f);
             aa.setDuration(2000);
             mLinearLayout.setAnimation(aa);
             mLinearLayout.startAnimation(aa);
-            //é€šè¿‡handler å»¶æ—¶2ç§’ æ‰§è¡Œrä»»åŠ¡
+            //Í¨¹ıhandler ÑÓÊ±2Ãë Ö´ĞĞrÈÎÎñ
             new Handler().postDelayed(new LoadMainTabTask(),2000);
         }else{
             showSetNetworkDialog();
@@ -48,7 +48,7 @@ public class SplashActivity extends Activity {
     }
 
     /**
-     * è·³è½¬åˆ°ä¸»ç•Œé¢*/
+     * Ìø×ªµ½Ö÷½çÃæ*/
     private class LoadMainTabTask implements Runnable{
 
         public void run() {
@@ -61,27 +61,27 @@ public class SplashActivity extends Activity {
     }
 
     /**
-     * â€œè®¾ç½®ç½‘ç»œâ€å¼¹å‡ºæ¡†*/
+     * ¡°ÉèÖÃÍøÂç¡±µ¯³ö¿ò*/
     private void showSetNetworkDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("è®¾ç½®ç½‘ç»œ");
-        builder.setMessage("ç½‘ç»œé”™è¯¯è¯·æ£€æŸ¥ç½‘ç»œçŠ¶æ€");
-        builder.setPositiveButton("è®¾ç½®ç½‘ç»œ", new DialogInterface.OnClickListener() {
+        builder.setTitle("ÉèÖÃÍøÂç");
+        builder.setMessage("ÍøÂç´íÎóÇë¼ì²éÍøÂç×´Ì¬");
+        builder.setPositiveButton("ÉèÖÃÍøÂç", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
-                //è·³è½¬åˆ°ç³»ç»Ÿè®¾ç½®
-                //ç”±äºç‰ˆæœ¬ä¸åŒï¼Œæ‰€ä»¥å†™æ³•ä¸åŒã€‚
+                //Ìø×ªµ½ÏµÍ³ÉèÖÃ
+                //ÓÉÓÚ°æ±¾²»Í¬£¬ËùÒÔĞ´·¨²»Í¬¡£
                 Intent intent = new Intent(android.provider.Settings.ACTION_WIRELESS_SETTINGS);
                 startActivity(intent);
                 finish();
 
 //                Intent intent = new Intent();
-//                //ç±»åä¸€å®šè¦åŒ…å«åŒ…å
+//                //ÀàÃûÒ»¶¨Òª°üº¬°üÃû
 //                intent.setClassName("com.android.settings", "com.android.settings.WirelessSettings");
 //                startActivity(intent);
 //                finish();
             }
         });
-        builder.setNegativeButton("å–æ¶ˆ", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("È¡Ïû", new DialogInterface.OnClickListener() {
 
             public void onClick(DialogInterface dialog, int which) {
                 finish();
@@ -92,7 +92,7 @@ public class SplashActivity extends Activity {
     }
 
     /**
-     * æ‹¿åˆ°ç‰ˆæœ¬ä¿¡æ¯*/
+     * ÄÃµ½°æ±¾ĞÅÏ¢*/
     private String getVersion(){
         try {
             PackageInfo info = getPackageManager().getPackageInfo(getPackageName(), 0);
@@ -104,7 +104,7 @@ public class SplashActivity extends Activity {
     }
 
     /**
-     * åˆ¤æ–­ç½‘ç»œçŠ¶æ€
+     * ÅĞ¶ÏÍøÂç×´Ì¬
      */
     private boolean isNetWorkConnected(){
 
@@ -112,7 +112,7 @@ public class SplashActivity extends Activity {
 //		wifimanager.isWifiEnabled();
 //		wifimanager.getWifiState();
 
-        //æ‹¿åˆ°ç³»ç»Ÿç½‘ç»œè¿æ¥ä¿¡æ¯
+        //ÄÃµ½ÏµÍ³ÍøÂçÁ¬½ÓĞÅÏ¢
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
         return (networkInfo != null && networkInfo.isConnected());

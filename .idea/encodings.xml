@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/豆瓣2.0/src/com/k/douban/BookshelfActivity.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/豆瓣2.0/src/com/k/douban/GridViewActivity.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/豆瓣2.0/src/com/k/douban/LoginInActivity.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/豆瓣2.0/src/com/k/douban/MainTabActivity.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/豆瓣2.0/src/com/k/douban/MeActivity.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/豆瓣2.0/src/com/k/douban/MyCrashHandler.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/豆瓣2.0/src/com/k/douban/MyInfoActivity.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/豆瓣2.0/src/com/k/douban/MyNoteActivity.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/豆瓣2.0/src/com/k/douban/MyReadActivity.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/豆瓣2.0/src/com/k/douban/NewBookActivity.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/豆瓣2.0/src/com/k/douban/SearchActivity.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/豆瓣2.0/src/com/k/douban/SplashActivity.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/豆瓣2.0/src/com/k/douban/util/NetUtil.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/豆瓣2.0/src/douban/model/app/RequestGrantScope.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/豆瓣2.0/src/douban/playground/PlayGround.java" charset="GBK" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

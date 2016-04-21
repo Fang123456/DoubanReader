@@ -67,7 +67,7 @@ public class MyNoteActivity extends BaseActivity implements OnClickListener {
 	public void setupView() {
 		mRelativeLoading = (RelativeLayout) this.findViewById(R.id.loading);
 		subjectlist = (ListView) this.findViewById(R.id.subjectlist);
-//	    subjectlist.setEmptyView();//å½“æ•°æ®ä¸ºç©ºçš„æ—¶å€™æ‰€æ˜¾ç¤ºçš„å†…å®¹
+//	    subjectlist.setEmptyView();//µ±Êı¾İÎª¿ÕµÄÊ±ºòËùÏÔÊ¾µÄÄÚÈİ
 		bt_next = (Button) this.findViewById(R.id.bt_next);
 		bt_pre = (Button) this.findViewById(R.id.bt_pre);
 
@@ -114,7 +114,7 @@ public class MyNoteActivity extends BaseActivity implements OnClickListener {
 		    return true;
 	  case R.id.menu_edit_note:
 		  	Intent editintent = new Intent(this,NewNoteActivity.class);
-		    // éœ€è¦é€šçŸ¥ NewNoteActivity æ“ä½œæ˜¯ä¸€ä¸ªç¼–è¾‘æ—¥è®°çš„æ“ä½œ
+		    // ĞèÒªÍ¨Öª NewNoteActivity ²Ù×÷ÊÇÒ»¸ö±à¼­ÈÕ¼ÇµÄ²Ù×÷
 		    editintent.putExtra("iseditnote", true);
 		    MyApp myapp = (MyApp) getApplication();
 		    myapp.note = note;
@@ -132,15 +132,15 @@ public class MyNoteActivity extends BaseActivity implements OnClickListener {
 			startindex = 1;
 			fillData();
 			if(requestCode==NEW_NOTE){
-				showToast("å‘è¡¨æ–°æ—¥è®°æˆåŠŸ,æ­£åœ¨åˆ·æ–°é¡µé¢");
+				showToast("·¢±íĞÂÈÕ¼Ç³É¹¦,ÕıÔÚË¢ĞÂÒ³Ãæ");
 			}else if(requestCode==EDIT_NOTE){
-				showToast("æ›´æ–°æ—¥è®°æˆåŠŸ,æ­£åœ¨åˆ·æ–°é¡µé¢");
+				showToast("¸üĞÂÈÕ¼Ç³É¹¦,ÕıÔÚË¢ĞÂÒ³Ãæ");
 			}
 		}
 	}
 
 	/**
-	 * åˆ é™¤æ—¥è®°
+	 * É¾³ıÈÕ¼Ç
 	 * @param entry
 	 */
 	private void deleteNote(DoubanNoteEntryObj entry) {
@@ -167,7 +167,7 @@ public class MyNoteActivity extends BaseActivity implements OnClickListener {
 			@Override
 			protected void onPreExecute() {
 				pd = new ProgressDialog(MyNoteActivity.this);
-				pd.setMessage("æ­£åœ¨åˆ é™¤æ—¥è®°");
+				pd.setMessage("ÕıÔÚÉ¾³ıÈÕ¼Ç");
 				pd.show();
 				super.onPreExecute();
 			}
@@ -178,7 +178,7 @@ public class MyNoteActivity extends BaseActivity implements OnClickListener {
 				if(result){
 					fillData();
 				}else{
-					showToast("åˆ é™¤æ—¥è®°å¤±è´¥");
+					showToast("É¾³ıÈÕ¼ÇÊ§°Ü");
 				}
 				super.onPostExecute(result);
 			}
@@ -191,7 +191,8 @@ public class MyNoteActivity extends BaseActivity implements OnClickListener {
 	@Override
 	public void fillData() {
 		if(isloading){
-			showToast("æ­£åœ¨ä¸‹è½½æ•°æ®ä¸­");
+//			showToast("ÕıÔÚÏÂÔØÊı¾İÖĞ");
+			showToast("ÕıÔÚÏÂÔØÊı¾İÖĞ");
 			return;
 		}
 		
@@ -209,18 +210,18 @@ public class MyNoteActivity extends BaseActivity implements OnClickListener {
 				hideLoading();
 				super.onPostExecute(result);
 				if (result != null) {
-					// è®¾ç½®åˆ°æ•°æ®é€‚é…å™¨é‡Œé¢
+					// ÉèÖÃµ½Êı¾İÊÊÅäÆ÷ÀïÃæ
 					MyNoteAdapter adapter = new MyNoteAdapter(result);
 					subjectlist.setAdapter(adapter);
 				} else {
-					showToast("ä¸‹è½½æ•°æ®å‘ç”Ÿå¼‚å¸¸");
+					showToast("ÏÂÔØÊı¾İ·¢ÉúÒì³£");
 				}
 				isloading =false;
 			}
 
 			@Override
 			protected List<Note> doInBackground(Void... params) {
-				//è·å–æ—¥è®°ä¿¡æ¯
+				//»ñÈ¡ÈÕ¼ÇĞÅÏ¢
 				DoubanNoteServiceTest doubanNoteServiceTest=new DoubanNoteServiceTest();
 				try {
 					sharedPreferences= getSharedPreferences("config", Activity.MODE_PRIVATE);
@@ -257,7 +258,7 @@ public class MyNoteActivity extends BaseActivity implements OnClickListener {
 //				try {
 //					UserEntry ue = myService.getAuthorizedUser();
 //					String uid = ue.getUid();
-//					// é¦–å…ˆè·å–ç”¨æˆ·çš„ æ‰€æœ‰æ”¶é›†çš„ä¿¡æ¯
+//					// Ê×ÏÈ»ñÈ¡ÓÃ»§µÄ ËùÓĞÊÕ¼¯µÄĞÅÏ¢
 //					NoteFeed noteFeed = myService.getUserNotes(uid, startindex,
 //							count);
 //					List<Note> notes = new ArrayList<Note>();
@@ -297,7 +298,7 @@ public class MyNoteActivity extends BaseActivity implements OnClickListener {
 		case R.id.bt_next:
 			startindex+=count;
 			if(startindex>100){
-				showToast("æœ€å¤šè·å–100æ¡");
+				showToast("×î¶à»ñÈ¡100Ìõ");
 				return ;
 			}
 			fillData();
@@ -308,7 +309,7 @@ public class MyNoteActivity extends BaseActivity implements OnClickListener {
 				startindex=startindex-count;
 				fillData();
 			}else{
-				showToast("å·²ç»ç¿»åˆ°äº†ç¬¬ä¸€é¡µ");
+				showToast("ÒÑ¾­·­µ½ÁËµÚÒ»Ò³");
 			}
 			break;
 		}

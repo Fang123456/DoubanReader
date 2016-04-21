@@ -62,7 +62,7 @@ public class NewBookActivity extends BaseActivity implements AdapterView.OnItemC
 			protected Boolean doInBackground(Void... params) {
 
 				try {
-					System.out.println("è°ƒç”¨bookçš„æ–¹æ³•");
+					System.out.println("µ÷ÓÃbookµÄ·½·¨");
 					newbooks = NetUtil.getNewBooks(getApplicationContext());
 					return true;
 				} catch (Exception e) {
@@ -83,7 +83,7 @@ public class NewBookActivity extends BaseActivity implements AdapterView.OnItemC
 				hideLoading();
 				super.onPostExecute(result);
 				if(result){
-					//è®¾ç½®æ•°æ®é€‚é…å™¨ 
+					//ÉèÖÃÊı¾İÊÊÅäÆ÷ 
 					if(adapter==null){
 						adapter = new NewBookAdapter();
 						subjectlist.setAdapter(adapter);
@@ -91,7 +91,7 @@ public class NewBookActivity extends BaseActivity implements AdapterView.OnItemC
 						adapter.notifyDataSetChanged();
 					}
 				}else{
-					showToast("æ•°æ®è·å– å¤±è´¥,è¯·æ£€æŸ¥ç½‘ç»œ");
+					showToast("Êı¾İ»ñÈ¡ Ê§°Ü,Çë¼ì²éÍøÂç");
 				}
 			}
 
@@ -131,7 +131,7 @@ public class NewBookActivity extends BaseActivity implements AdapterView.OnItemC
 			rb.setProgress(4);
 		
 			LinearLayout ll = (LinearLayout) view.findViewById(R.id.ll_book_image);
-			//æ¸…ç©ºllçš„é‡Œé¢çš„viewå¯¹è±¡
+			//Çå¿ÕllµÄÀïÃæµÄview¶ÔÏó
 			ll.removeAllViews();
 			
 			ll.addView(iv, new LayoutParams(60, 60));
@@ -174,7 +174,7 @@ public class NewBookActivity extends BaseActivity implements AdapterView.OnItemC
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		menu.add(0, 0, 0, "è®¾ç½®ç•Œé¢");
+		menu.add(0, 0, 0, "ÉèÖÃ½çÃæ");
 		return super.onCreateOptionsMenu(menu);
 	}
 
@@ -186,11 +186,11 @@ public class NewBookActivity extends BaseActivity implements AdapterView.OnItemC
 	}
 
 
-	//ç‚¹å‡»æ¯ä¸ªæ¡ç›®æ‰€å¯¹åº”çš„ç‚¹å‡»äº‹ä»¶
+	//µã»÷Ã¿¸öÌõÄ¿Ëù¶ÔÓ¦µÄµã»÷ÊÂ¼ş
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-		System.out.println("ç‚¹å‡»æ¡ç›®");
+		System.out.println("µã»÷ÌõÄ¿");
 		NewBook newbook =(NewBook) subjectlist.getItemAtPosition(position);
-		System.out.println("å°±å‘è§‰çœ‹æ³•å“ˆçš„vnzcv"+newbook.getId());
+		System.out.println("¾Í·¢¾õ¿´·¨¹şµÄvnzcv"+newbook.getId());
 		Intent intent = new Intent(this,BookDetailActivity.class);
 		intent.putExtra("SubjectId", newbook.getId());
 		startActivity(intent);

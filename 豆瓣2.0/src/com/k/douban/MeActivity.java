@@ -19,8 +19,8 @@ public class MeActivity extends Activity implements AdapterView.OnItemClickListe
     private ListView mListView;
     private SharedPreferences sp;
     private ImageButton back_button;
-//    private static final String[] arr = {"æˆ‘è¯»","æˆ‘çœ‹","æˆ‘å¬","æˆ‘è¯„","æˆ‘çš„æ—¥è®°","æˆ‘çš„èµ„æ–™","å°ç»„"};
-    private static final String[] arr = {"æˆ‘çš„æ”¶è—","æˆ‘è¯„","æˆ‘çš„æ—¥è®°","æˆ‘çš„èµ„æ–™"};
+//    private static final String[] arr = {"ÎÒ¶Á","ÎÒ¿´","ÎÒÌı","ÎÒÆÀ","ÎÒµÄÈÕ¼Ç","ÎÒµÄ×ÊÁÏ","Ğ¡×é"};
+    private static final String[] arr = {"ÎÒµÄÊÕ²Ø","ÎÒµÄÈÕ¼Ç","ÎÒµÄ×ÊÁÏ"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,41 +44,41 @@ public class MeActivity extends Activity implements AdapterView.OnItemClickListe
         }
     };
     /**
-     * ç›‘å¬ç‚¹å‡»äº‹ä»¶*/
+     * ¼àÌıµã»÷ÊÂ¼ş*/
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
         if(isUserAuthoroized()){
            System.out.println("yanzheng"+isUserAuthoroized());
-            //è¿›å…¥åˆ°å¯¹åº”çš„ç•Œé¢
+            //½øÈëµ½¶ÔÓ¦µÄ½çÃæ
             switch (position) {
-                case 0://æˆ‘è¯»
+                case 0://ÎÒ¶Á
                     Intent  myReadIntent = new Intent(MeActivity.this,MyReadActivity.class);
                     startActivity(myReadIntent);
                     break;
-//                case 1://æˆ‘å¬
+//                case 1://ÎÒÌı
 ////                    Intent  myReadIntent = new Intent(MeActivity.this,MyReadActivity.class);
 ////                    startActivity(myReadIntent);
 //                    break;
-                case 1://æˆ‘è¯„
+//                case 1://ÎÒÆÀ
 //                    Intent  myReadIntent = new Intent(MeActivity.this,MyReadActivity.class);
 //                    startActivity(myReadIntent);
-                    break;
-                case 2://æˆ‘çš„æ—¥è®°
+//                    break;
+                case 2://ÎÒµÄÈÕ¼Ç
                     Intent  myNoteIntent = new Intent(MeActivity.this,MyNoteActivity.class);
                     startActivity(myNoteIntent);
                     break;
-                case 3://æˆ‘çš„èµ„æ–™
+                case 3://ÎÒµÄ×ÊÁÏ
                     Intent myInfoIntent = new Intent(MeActivity.this, MyInfoActivity.class);
                     startActivity(myInfoIntent);
                     break;
 //
-//                case 5://å°ç»„
+//                case 5://Ğ¡×é
 //                    Intent myInfoIntent = new Intent(MeActivity.this, MyInfoActivity.class);
 //                    startActivity(myInfoIntent);
 //                    break;
             }
         }else{
-            //å®šå‘åˆ°ç™»é™†ç•Œé¢
+            //¶¨Ïòµ½µÇÂ½½çÃæ
             Intent intent = new Intent(this,LoginInActivity.class);
             startActivity(intent);
         }
@@ -86,7 +86,7 @@ public class MeActivity extends Activity implements AdapterView.OnItemClickListe
     }
 
     /**
-     * åˆ¤æ–­ç”¨æˆ·æ˜¯å¦è·å–åˆ°äº†æˆæƒ
+     * ÅĞ¶ÏÓÃ»§ÊÇ·ñ»ñÈ¡µ½ÁËÊÚÈ¨
      */
     private boolean isUserAuthoroized(){
         sp= getSharedPreferences("config", Activity.MODE_PRIVATE);
@@ -94,7 +94,7 @@ public class MeActivity extends Activity implements AdapterView.OnItemClickListe
         String refreshtoken = sp.getString("refreshtoken", null);
         String uid=sp.getString("userid",null);
 
-        //ç”±äºæ— æ³•æ‰‹åŠ¨æ‹¿åˆ°codeï¼Œæ‰€ä»¥ä½œå¼Šä¸€ä¸‹(å…¶å®ä¸è¯¥ä¿å­˜ç”¨æˆ·åå’Œå¯†ç )
+        //ÓÉÓÚÎŞ·¨ÊÖ¶¯ÄÃµ½code£¬ËùÒÔ×÷±×Ò»ÏÂ(ÆäÊµ²»¸Ã±£´æÓÃ»§ÃûºÍÃÜÂë)
         String username=sp.getString("username",null);
         String userpwd=sp.getString("userpwd",null);
         System.out.println("username:"+username);
@@ -103,7 +103,7 @@ public class MeActivity extends Activity implements AdapterView.OnItemClickListe
         if(accesstoken==null||refreshtoken==null||accesstoken.equals("")||refreshtoken.equals("")){
             return false;
         }else{
-            //ç”±äºæ— æ³•æ‰‹åŠ¨æ‹¿åˆ°codeï¼Œæ‰€ä»¥ä½œå¼Šä¸€ä¸‹(å…¶å®ä¸è¯¥ä¿å­˜ç”¨æˆ·åå’Œå¯†ç )
+            //ÓÉÓÚÎŞ·¨ÊÖ¶¯ÄÃµ½code£¬ËùÒÔ×÷±×Ò»ÏÂ(ÆäÊµ²»¸Ã±£´æÓÃ»§ÃûºÍÃÜÂë)
             if(username==null||userpwd==null||username.equals("")||userpwd.equals(""))
                 return false;
             return true;

@@ -21,17 +21,17 @@ import android.os.Build;
 import android.util.Log;
 
 public class MyCrashHandler implements UncaughtExceptionHandler {
-	// ä¿è¯MyCrashHandleråªæœ‰ä¸€ä¸ªå®ä¾‹
-	// 2.æä¾›ä¸€ä¸ªé™æ€çš„ç¨‹åºå˜é‡
+	// ±£Ö¤MyCrashHandlerÖ»ÓĞÒ»¸öÊµÀı
+	// 2.Ìá¹©Ò»¸ö¾²Ì¬µÄ³ÌĞò±äÁ¿
 	private static MyCrashHandler myCrashHandler;
 	private Context context;
 
-	// 1.ç§æœ‰åŒ–æ„é€ æ–¹æ³•
+	// 1.Ë½ÓĞ»¯¹¹Ôì·½·¨
 	private MyCrashHandler() {
 
 	}
 
-	// 3.æš´éœ²å‡ºæ¥ä¸€ä¸ªé™æ€çš„æ–¹æ³• è·å–myCrashHandler
+	// 3.±©Â¶³öÀ´Ò»¸ö¾²Ì¬µÄ·½·¨ »ñÈ¡myCrashHandler
 
 	public static synchronized MyCrashHandler getInstance() {
 		if (myCrashHandler == null) {
@@ -44,24 +44,24 @@ public class MyCrashHandler implements UncaughtExceptionHandler {
 		this.context = context;
 	}
 
-	// ç¨‹åºå‘ç”Ÿå¼‚å¸¸çš„æ—¶å€™è°ƒç”¨çš„æ–¹æ³•
+	// ³ÌĞò·¢ÉúÒì³£µÄÊ±ºòµ÷ÓÃµÄ·½·¨
 	// try catch
 
 	public void uncaughtException(Thread thread, Throwable ex) {
-		System.out.println("å‡ºç°é”™è¯¯å•¦ å“ˆå“ˆ");
+		System.out.println("³öÏÖ´íÎóÀ² ¹ş¹ş");
 		StringBuilder sb = new StringBuilder();
-		// 1.è·å–å½“å‰åº”ç”¨ç¨‹åºçš„ç‰ˆæœ¬å·.
+		// 1.»ñÈ¡µ±Ç°Ó¦ÓÃ³ÌĞòµÄ°æ±¾ºÅ.
 		PackageManager pm = context.getPackageManager();
 		try {
 			PackageInfo packinfo = pm.getPackageInfo(context.getPackageName(),
 					0);
-			sb.append("ç¨‹åºçš„ç‰ˆæœ¬å·ä¸º" + packinfo.versionName);
+			sb.append("³ÌĞòµÄ°æ±¾ºÅÎª" + packinfo.versionName);
 			sb.append("\n");
 
-			// 2.è·å–æ‰‹æœºçš„ç¡¬ä»¶ä¿¡æ¯.
+			// 2.»ñÈ¡ÊÖ»úµÄÓ²¼şĞÅÏ¢.
 			Field[] fields = Build.class.getDeclaredFields();
 			for (int i = 0; i < fields.length; i++) {
-				// æš´åŠ›åå°„,è·å–ç§æœ‰çš„å­—æ®µä¿¡æ¯
+				// ±©Á¦·´Éä,»ñÈ¡Ë½ÓĞµÄ×Ö¶ÎĞÅÏ¢
 				fields[i].setAccessible(true);
 				String name = fields[i].getName();
 				sb.append(name + " = ");
@@ -69,7 +69,7 @@ public class MyCrashHandler implements UncaughtExceptionHandler {
 				sb.append(value);
 				sb.append("\n");
 			}
-			// 3.è·å–ç¨‹åºé”™è¯¯çš„å †æ ˆä¿¡æ¯ .
+			// 3.»ñÈ¡³ÌĞò´íÎóµÄ¶ÑÕ»ĞÅÏ¢ .
 			StringWriter writer = new StringWriter();
 			PrintWriter printWriter = new PrintWriter(writer);
 			ex.printStackTrace(printWriter);
@@ -80,10 +80,10 @@ public class MyCrashHandler implements UncaughtExceptionHandler {
 		    
 		    System.out.println(sb.toString());
 
-			// 4.æŠŠé”™è¯¯ä¿¡æ¯ æäº¤åˆ°æœåŠ¡å™¨
+			// 4.°Ñ´íÎóĞÅÏ¢ Ìá½»µ½·şÎñÆ÷
 //		    String apiKey = "0c51c1ba21ad8cfd24f5452e6508a6f7";
 //			String secret = "359e16e5e5c62b6e";
-//			DoubanService myService = new DoubanService("é»‘é©¬å°ç“£ç“£", apiKey,
+//			DoubanService myService = new DoubanService("ºÚÂíĞ¡°ê°ê", apiKey,
 //					secret);
 //			SharedPreferences sp = context.getSharedPreferences("config", Context.MODE_PRIVATE);
 //			String accesstoken = sp.getString("accesstoken", "");
@@ -100,7 +100,7 @@ public class MyCrashHandler implements UncaughtExceptionHandler {
 			e.printStackTrace();
 		}
 
-		// å®Œæˆè‡ªæ€çš„æ“ä½œ
+		// Íê³É×ÔÉ±µÄ²Ù×÷
 		android.os.Process.killProcess(android.os.Process.myPid());
 	}
 

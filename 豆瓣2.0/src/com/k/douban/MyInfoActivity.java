@@ -39,10 +39,10 @@ public class MyInfoActivity extends BaseActivity implements OnClickListener {
 	String iconurl;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		//ä¿è¯é¦–å…ˆè®¾ç½®contentview ç„¶åå†å»è°ƒç”¨çˆ¶ç±»çš„æ–¹æ³•
+		//±£Ö¤Ê×ÏÈÉèÖÃcontentview È»ºóÔÙÈ¥µ÷ÓÃ¸¸ÀàµÄ·½·¨
 		setContentView(R.layout.my_info);
 		super.onCreate(savedInstanceState);
-//		System.out.println("å¼€å§‹ï¼š");
+//		System.out.println("¿ªÊ¼£º");
 		back_button= (ImageButton) findViewById(R.id.back_button);
 		back_button.setOnClickListener(mGoBack);
 		setupView();
@@ -73,10 +73,10 @@ public class MyInfoActivity extends BaseActivity implements OnClickListener {
 
 	@Override
 	public void fillData() {
-		System.out.println("è°ƒç”¨fillData()");
-		//            å‚æ•°ï¼Œ è¿›åº¦ï¼Œç»“æœ
+		System.out.println("µ÷ÓÃfillData()");
+		//            ²ÎÊı£¬ ½ø¶È£¬½á¹û
 		new AsyncTask<Void, Void, Void>() {
-			//onPreExecute åœ¨å¼‚æ­¥ä»»åŠ¡æ‰§è¡Œä¹‹å‰è°ƒç”¨çš„æ–¹æ³•,è¿è¡Œåœ¨ä¸»çº¿ç¨‹é‡Œé¢çš„,åˆå§‹åŒ–uiçš„æ“ä½œ
+			//onPreExecute ÔÚÒì²½ÈÎÎñÖ´ĞĞÖ®Ç°µ÷ÓÃµÄ·½·¨,ÔËĞĞÔÚÖ÷Ïß³ÌÀïÃæµÄ,³õÊ¼»¯uiµÄ²Ù×÷
 			@Override
 			protected void onPreExecute() {
 				System.out.println("onPreExecute()  showLoading()");
@@ -84,20 +84,20 @@ public class MyInfoActivity extends BaseActivity implements OnClickListener {
 				super.onPreExecute();
 			}
 
-			// onPostExecute åœ¨å¼‚æ­¥ä»»åŠ¡(åå°ä»»åŠ¡)æ‰§è¡Œä¹‹åè°ƒç”¨çš„æ–¹æ³•,è¿è¡Œåœ¨uiçº¿ç¨‹ä¸­ ,
+			// onPostExecute ÔÚÒì²½ÈÎÎñ(ºóÌ¨ÈÎÎñ)Ö´ĞĞÖ®ºóµ÷ÓÃµÄ·½·¨,ÔËĞĞÔÚuiÏß³ÌÖĞ ,
 			@Override
 			protected void onPostExecute(Void result) {
 				hideLoading();
 				super.onPostExecute(result);
-				System.out.println("å°†å†…å®¹æ·»åŠ åˆ°ç•Œé¢");
+				System.out.println("½«ÄÚÈİÌí¼Óµ½½çÃæ");
 				tv_info.setText(content);
 				tv_location.setText(location);
 				tv_name.setText(name);
-				//è®¾ç½®ç”¨æˆ·çš„å¤´åƒ 
+				//ÉèÖÃÓÃ»§µÄÍ·Ïñ 
 				LoadImageAsynTask task = new LoadImageAsynTask(new LoadImageAsynTask.LoadImageAsynTaskCallback() {
 					public void beforeLoadImage() {
 						System.out.println("beforeLoadImage");
-						iv_icon.setImageResource(R.drawable.ic_launcher);  //è®¾ç½®é»˜è®¤å›¾æ ‡
+						iv_icon.setImageResource(R.drawable.ic_launcher);  //ÉèÖÃÄ¬ÈÏÍ¼±ê
 						
 					}
 					public void afterLoadImage(Bitmap bitmap) {
@@ -105,22 +105,22 @@ public class MyInfoActivity extends BaseActivity implements OnClickListener {
 						if (bitmap!=null) {
 							iv_icon.setImageBitmap(bitmap);
 						}else{
-							iv_icon.setImageResource(R.drawable.ic_launcher);//è®¾ç½®é»˜è®¤å›¾æ ‡
+							iv_icon.setImageResource(R.drawable.ic_launcher);//ÉèÖÃÄ¬ÈÏÍ¼±ê
 						}
 						
 					}
 				});
 				task.execute(iconurl);
 			}
-			// doInBackground åå°æ‰§è¡Œçš„ä»»åŠ¡ 
-			// æ–¹æ³•è¿è¡Œåœ¨ä¸€ä¸ªå­çº¿ç¨‹å½“ä¸­ 
+			// doInBackground ºóÌ¨Ö´ĞĞµÄÈÎÎñ 
+			// ·½·¨ÔËĞĞÔÚÒ»¸ö×ÓÏß³Ìµ±ÖĞ 
 			@Override
 			protected Void doInBackground(Void... params) {
 				System.out.println("doInBackground()");
-				// æ‰§è¡Œè€—æ—¶çš„æ“ä½œ 
+				// Ö´ĞĞºÄÊ±µÄ²Ù×÷ 
 //				try {
 
-					//è·å–ç”¨æˆ·ä¿¡æ¯å¹¶æ‰“å°
+					//»ñÈ¡ÓÃ»§ĞÅÏ¢²¢´òÓ¡
 //					UserEntry ue = myService.getAuthorizedUser();
 //					 name = ue.getTitle().getPlainText();
 //					 location = ue.getLocation();
@@ -130,10 +130,10 @@ public class MyInfoActivity extends BaseActivity implements OnClickListener {
 //								iconurl = link.getHref();
 //							}
 //						}
-					  //NAME ç”¨æˆ·id CONTENT ICONURL
+					  //NAME ÓÃ»§id CONTENT ICONURL
 
 				DoubanUserServiceTest doubanUserServiceTest=new DoubanUserServiceTest();
-				System.out.println("å‘µå‘µå‘µå‘µå‘µå‘µå‘µå‘µ");
+				System.out.println("ºÇºÇºÇºÇºÇºÇºÇºÇ");
 				DoubanUserObj result= null;
 				sharedPreferences= getSharedPreferences("config", Activity.MODE_PRIVATE);
 				String userid=sharedPreferences.getString("userid", "");
@@ -143,17 +143,17 @@ public class MyInfoActivity extends BaseActivity implements OnClickListener {
 					e.printStackTrace();
 				}
 				name=result.getTitle();
-				location="å¸¸å±…ï¼šå¤©æ´¥";
+				location="³£¾Ó£ºÌì½ò";
 				iconurl=result.getLinks().get(2).getHref();
 				content= result.getContent();
-				System.out.println("å“ˆå“ˆå“ˆå“ˆå“ˆå“ˆå“ˆ");
-				System.out.println("getUserProfileByUid1"+result.getTitle());   //ç”¨æˆ·å
+				System.out.println("¹ş¹ş¹ş¹ş¹ş¹ş¹ş");
+				System.out.println("getUserProfileByUid1"+result.getTitle());   //ÓÃ»§Ãû
 				System.out.println("getUserProfileByUid2"+result.getLocation());//null
-				System.out.println("getUserProfileByUid3"+result.getContent()); //è‡ªæˆ‘ä»‹ç»
-				System.out.println("getUserProfileByUid4"+result.getUid());      //ç”¨æˆ·id
+				System.out.println("getUserProfileByUid3"+result.getContent()); //×ÔÎÒ½éÉÜ
+				System.out.println("getUserProfileByUid4"+result.getUid());      //ÓÃ»§id
 				System.out.println("getUserProfileByUid5"+result.getLinks().get(2).getHref());
-				System.out.println("getUserProfileByUid6"+result.getSignature()); //ç­¾å
-				System.out.println("getUserProfileByUid7" + result.getUri());  //entryçš„åœ°å€
+				System.out.println("getUserProfileByUid6"+result.getSignature()); //Ç©Ãû
+				System.out.println("getUserProfileByUid7" + result.getUri());  //entryµÄµØÖ·
 //				} catch (Exception e) {
 //					e.printStackTrace();
 //				}

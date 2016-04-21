@@ -99,6 +99,11 @@
                 android:name=".SearchActivity"
                 android:theme="@android:style/Theme.NoTitleBar">
         </activity>
+        <activity
+                android:label="搜索"
+                android:name=".BookshelfActivity"
+                android:theme="@android:style/Theme.NoTitleBar">
+        </activity>
     </application>
 
 </manifest>

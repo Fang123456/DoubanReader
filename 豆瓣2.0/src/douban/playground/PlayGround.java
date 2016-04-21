@@ -53,7 +53,7 @@ public class PlayGround {
      * xmlns:opensearch="http://a9.com/-/spec/opensearchrss/1.0/"> @param args
      */
     public static void main(String[] args) {
-//    //"douban_user_name":"åˆ˜æ–¹","douban_user_id":"137280810"
+//    //"douban_user_name":"Áõ·½","douban_user_id":"137280810"
         String access_token="1eb7c6c007025b975c275440150712c5";
         String refresh_token="5db77c02dd7e738c19267408987b5aa4";
         String uid = "137280810";
@@ -68,7 +68,7 @@ public class PlayGround {
 //    testGetBookInfo();
         DoubanBookMovieMusicServiceTest doubanBookMovieMusicServiceTest = new DoubanBookMovieMusicServiceTest();
         try {
-            DoubanSubjectFeedObj doubanSubjectFeedObj = doubanBookMovieMusicServiceTest.testSearchBook_String_String("ä½ ");
+            DoubanSubjectFeedObj doubanSubjectFeedObj = doubanBookMovieMusicServiceTest.testSearchBook_String_String("Äã");
             System.out.println("DoubanSubjectFeedObj" + doubanSubjectFeedObj);
         } catch (Exception e) {
             e.printStackTrace();
@@ -99,11 +99,11 @@ public class PlayGround {
         }
     }
 
-    //è‡ªå·±æ”¹çš„
-    //è¿™æ˜¯åŸæ¥çš„public static String testAccessToken() {
+    //×Ô¼º¸ÄµÄ
+    //ÕâÊÇÔ­À´µÄpublic static String testAccessToken() {
     public AccessToken testAccessToken1(String name, String pwd, String captcha, String captchaid, Context context) {
         try {
-            System.out.println("è¿›å…¥playgrondçš„testAccessToken1æ–¹æ³•");
+            System.out.println("½øÈëplaygrondµÄtestAccessToken1·½·¨");
             OAuthDoubanProvider oauth = new OAuthDoubanProvider();
             oauth.setApiKey("04c0319d59f7e2370e4094d80de7a6a5").setSecretKey("830f91dc993dd2f3");
             oauth.addScope(RequestGrantScope.BASIC_COMMON_SCOPE).addScope(RequestGrantScope.SHUO_READ_SCOPE).addScope(RequestGrantScope.SHUO_WRITE_SCOPE)
@@ -115,16 +115,16 @@ public class PlayGround {
 
 //
 //
-//            //æ¨¡æ‹Ÿç™»å½•ï¼Œæ‰“å¼€ç™»å½•ç•Œé¢ï¼Œä¿å­˜cookie
+//            //Ä£ÄâµÇÂ¼£¬´ò¿ªµÇÂ¼½çÃæ£¬±£´æcookie
 //            HttpPost httppost = new HttpPost("http://www.douban.com/accounts/login");
-//            List<NameValuePair> namevaluepairs  = new ArrayList<NameValuePair>();//è®¾ç½®http postè¯·æ±‚æäº¤çš„æ•°æ®
+//            List<NameValuePair> namevaluepairs  = new ArrayList<NameValuePair>();//ÉèÖÃhttp postÇëÇóÌá½»µÄÊı¾İ
 //            namevaluepairs.add(new BasicNameValuePair("source", "simple"));
 //            namevaluepairs.add(new BasicNameValuePair("redir", "http://www.douban.com"));
 //            namevaluepairs.add(new BasicNameValuePair("form_email", name));
 //            namevaluepairs.add(new BasicNameValuePair("form_password", pwd));
 //            namevaluepairs.add(new BasicNameValuePair("captcha-solution",captcha));
 //            namevaluepairs.add(new BasicNameValuePair("captcha-id",captchaid));
-//            namevaluepairs.add(new BasicNameValuePair("user_login", "ç™»å½•"));
+//            namevaluepairs.add(new BasicNameValuePair("user_login", "µÇÂ¼"));
 //            UrlEncodedFormEntity entity = null;
 //            try {
 //                entity = new UrlEncodedFormEntity(namevaluepairs,"utf-8");
@@ -132,14 +132,14 @@ public class PlayGround {
 //                e.printStackTrace();
 //            }
 //            httppost.setEntity(entity);
-//            DefaultHttpClient client = new DefaultHttpClient();  //  åˆ›å»ºä¸€ä¸ªæµè§ˆå™¨
-//            HttpResponse response = null;  // å®Œæˆäº†ç”¨æˆ·ç™»é™†è±†ç“£çš„æ“ä½œ
+//            DefaultHttpClient client = new DefaultHttpClient();  //  ´´½¨Ò»¸öä¯ÀÀÆ÷
+//            HttpResponse response = null;  // Íê³ÉÁËÓÃ»§µÇÂ½¶¹°êµÄ²Ù×÷
 //            try {
 //                response = client.execute(httppost);
 //            } catch (IOException e) {
 //                e.printStackTrace();
 //            }
-//            System.out.println(response.getStatusLine().getStatusCode());//åˆ¤æ–­æ˜¯å¦ç™»å½•æˆåŠŸ
+//            System.out.println(response.getStatusLine().getStatusCode());//ÅĞ¶ÏÊÇ·ñµÇÂ¼³É¹¦
 //            Source source  = null;
 //            try {
 //                source = new Source(response.getEntity().getContent());
@@ -147,12 +147,12 @@ public class PlayGround {
 //                e.printStackTrace();
 //            }
 //            //System.out.println( source.toString());
-//            CookieStore cookie =  client.getCookieStore(); // è·å–ç™»é™†æˆåŠŸçš„cookie
+//            CookieStore cookie =  client.getCookieStore(); // »ñÈ¡µÇÂ½³É¹¦µÄcookie
 //            //System.out.println( "cookie"+cookie.getCookies());
 //            System.out.println( "------------------------------------");
 //
 //
-//            //å¸¦ç€cookieè®¿é—®è±†ç“£è®¤è¯ç½‘ç«™  æ¨¡æ‹Ÿç”¨æˆ·ç‚¹å‡» åŒæ„æŒ‰é’®
+//            //´ø×Åcookie·ÃÎÊ¶¹°êÈÏÖ¤ÍøÕ¾  Ä£ÄâÓÃ»§µã»÷ Í¬Òâ°´Å¥
 //            //ck=Rw1e&oauth_token=6817c2017cc375dc38474604764a6194&
 //            //oauth_callback=&ssid=9d9af9b0&confirm=%E5%90%8C%E6%84%8F
 ////            HttpGet gets= new HttpGet(url);
@@ -165,7 +165,7 @@ public class PlayGround {
 ////            namevaluepairs1.add(new BasicNameValuePair("oauth_token",oauth_token));
 ////            namevaluepairs1.add(new BasicNameValuePair("oauth_callback",""));
 //            namevaluepairs1.add(new BasicNameValuePair("ssid","df05cbd2"));
-//            namevaluepairs1.add(new BasicNameValuePair("confirm","æˆæƒ"));
+//            namevaluepairs1.add(new BasicNameValuePair("confirm","ÊÚÈ¨"));
 //            UrlEncodedFormEntity entity1 = null;
 //            try {
 //                entity1 = new UrlEncodedFormEntity(namevaluepairs1,"utf-8");
@@ -213,7 +213,7 @@ public class PlayGround {
 //            function getParameter(parName){           var str = parName.toLowerCase() + "=";
 //            var gvalue = "";
 //            var HREF = location.href;
-//            var upperHREF = location.hrefæœç´¢.toLowerCase();
+//            var upperHREF = location.hrefËÑË÷.toLowerCase();
 //            if(upperHREF.indexOf(str)>0){
 //                gvalue = HREF.substring(upperHREF.indexOf(str) + str.length,upperHREF.length);
 //                if(gvalue.indexOf('&')>0) gvalue = gvalue.substring(0,gvalue.indexOf('&'));
@@ -222,7 +222,7 @@ public class PlayGround {
 //            return gvalue;
 //            }
 
-            //ä»è¿”å›çš„åœ°å€æ ä¸­è·å–code
+            //´Ó·µ»ØµÄµØÖ·À¸ÖĞ»ñÈ¡code
 
 
 
@@ -237,11 +237,11 @@ public class PlayGround {
 
 
 
-            //ä½¿ç”¨å†…åµŒæµè§ˆå™¨å®Œæˆæˆæƒï¼Œå¹¶æ‹¿åˆ°è¿”å›çš„code
-//            //æ‰‹å·¥   ç™»å½•æˆæƒè·å–code
+            //Ê¹ÓÃÄÚÇ¶ä¯ÀÀÆ÷Íê³ÉÊÚÈ¨£¬²¢ÄÃµ½·µ»ØµÄcode
+//            //ÊÖ¹¤   µÇÂ¼ÊÚÈ¨»ñÈ¡code
 
             System.out.println(url);
-            String code = "699ee0ada6c35ca2"; //è¿™æ˜¯æœ€è¿‘ä¸€æ¬¡çš„codeï¼Œéœ€è¦æ‰‹åŠ¨è·å–ã€‚
+            String code = "699ee0ada6c35ca2"; //ÕâÊÇ×î½üÒ»´ÎµÄcode£¬ĞèÒªÊÖ¶¯»ñÈ¡¡£
 
             AccessToken at = oauth.tradeAccessTokenWithCode(code);
             System.out.println("at : " + at.getAccessToken());
@@ -379,8 +379,8 @@ public class PlayGround {
 
 
     /*
-    * è·å–ç”¨æˆ·ä¿¡æ¯
-    * egï¼š{"city":"å¤©æ´¥","icon_avatar":"http:\/\/img3.douban.com\/pics\/icon\/user_icon.jpg","statuses_count":1,"screen_name":"åˆ˜æ–¹","following_count":0,"url":"http:\/\/www.douban.com\/people\/137280810\/","created_at":"2015-11-07 15:16:02","description":"","logged_in":true,"blocking":false,"following":false,"followers_count":0,"blocked":false,"location":"","small_avatar":"http:\/\/img3.douban.com\/icon\/user_normal.jpg","uid":"137280810","verified":false,"is_first_visit":true,"type":"user","id":"137280810","large_avatar":"http:\/\/img3.douban.com\/icon\/user_large.jpg"}*/
+    * »ñÈ¡ÓÃ»§ĞÅÏ¢
+    * eg£º{"city":"Ìì½ò","icon_avatar":"http:\/\/img3.douban.com\/pics\/icon\/user_icon.jpg","statuses_count":1,"screen_name":"Áõ·½","following_count":0,"url":"http:\/\/www.douban.com\/people\/137280810\/","created_at":"2015-11-07 15:16:02","description":"","logged_in":true,"blocking":false,"following":false,"followers_count":0,"blocked":false,"location":"","small_avatar":"http:\/\/img3.douban.com\/icon\/user_normal.jpg","uid":"137280810","verified":false,"is_first_visit":true,"type":"user","id":"137280810","large_avatar":"http:\/\/img3.douban.com\/icon\/user_large.jpg"}*/
     public static void testFollowUser() {
         try {
 //      String accessToken = testAccessToken();
@@ -451,7 +451,7 @@ public class PlayGround {
         att.setCaption("");
         att.setExpanedHref("http://www.dongxuexidu.com");
         att.setHref("http://www.dongxuexidu.com");
-        att.setTitle("ä¸œå­¦è¥¿è¯»");
+        att.setTitle("¶«Ñ§Î÷¶Á");
         att.setType("");
         return att;
     }

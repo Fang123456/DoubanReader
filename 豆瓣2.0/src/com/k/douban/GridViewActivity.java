@@ -84,11 +84,11 @@ public class GridViewActivity extends BaseActivity {
 				hideLoading();
 				super.onPostExecute(result);
 				if (result) {
-					// è®¾ç½®æ•°æ®é€‚é…å™¨
+					// ÉèÖÃÊı¾İÊÊÅäÆ÷
 					MyGridViewAdapter adapter = new MyGridViewAdapter();
 					subjectGrid.setAdapter(adapter);
 				} else {
-					showToast("æ•°æ®è·å– å¤±è´¥,è¯·æ£€æŸ¥ç½‘ç»œ");
+					showToast("Êı¾İ»ñÈ¡ Ê§°Ü,Çë¼ì²éÍøÂç");
 				}
 			}
 

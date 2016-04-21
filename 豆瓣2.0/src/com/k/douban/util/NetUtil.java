@@ -33,15 +33,15 @@ import java.util.Map;
  * Created by AAAAA on 2015/11/25.
  */
 
-//æ­¤ç±»ä¸»è¦ç”¨äºä¸ç½‘ç»œç›¸å…³çš„æ“ä½œ
+//´ËÀàÖ÷ÒªÓÃÓÚÓëÍøÂçÏà¹ØµÄ²Ù×÷
 public class NetUtil {
     /**
-    * åˆ¤æ–­æ˜¯å¦éœ€è¦éªŒè¯ç ,å¹¶è¿”å›èŠ‚ç‚¹çš„id*/
+    * ÅĞ¶ÏÊÇ·ñĞèÒªÑéÖ¤Âë,²¢·µ»Ø½ÚµãµÄid*/
     public static String isNeedCaptcha(Context context) throws Exception {
         String loginurl = context.getResources().getString(R.string.loginurl);
         URL url = new URL(loginurl);
         URLConnection urlConnection = url.openConnection();
-        //åˆ©ç”¨æ¶åŒ…jericho-htmlè§£æurlä¸­è¿”å›çš„elementï¼Œé€šè¿‡åˆ¤æ–­ captcha-idçš„å­˜åœ¨ä»è€Œåˆ¤æ–­æ˜¯å¦éœ€éªŒè¯ç 
+        //ÀûÓÃ¼Ü°üjericho-html½âÎöurlÖĞ·µ»ØµÄelement£¬Í¨¹ıÅĞ¶Ï captcha-idµÄ´æÔÚ´Ó¶øÅĞ¶ÏÊÇ·ñĞèÑéÖ¤Âë
         Source source = new Source(urlConnection);
         List<Element> elements = source.getAllElements("input");
         for (Element element : elements) {
@@ -54,7 +54,7 @@ public class NetUtil {
     }
 
     /**
-    * æ‹¿åˆ°éªŒè¯ç å›¾ç‰‡*/
+    * ÄÃµ½ÑéÖ¤ÂëÍ¼Æ¬*/
     public static Bitmap getImage(String path) throws Exception {
         URL url = new URL(path);
         HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -63,13 +63,13 @@ public class NetUtil {
     }
 
     /**
-     * å°†accesstoken refreshtoken useridä¿å­˜åˆ° SharedPreferencesä¸­*/
+     * ½«accesstoken refreshtoken userid±£´æµ½ SharedPreferencesÖĞ*/
     public static boolean Login(String name, String pwd, String captcha, String captchaid, Context context) throws Exception {
-        //ç”±äºæ— æ³•æ‰‹åŠ¨æ‹¿åˆ°codeï¼Œæ‰€ä»¥ä½œå¼Šä¸€ä¸‹
+        //ÓÉÓÚÎŞ·¨ÊÖ¶¯ÄÃµ½code£¬ËùÒÔ×÷±×Ò»ÏÂ
         SharedPreferences sp1 = context.getSharedPreferences("config", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor1 = sp1.edit();
-        editor1.putString("username", "2797037168@qq.com");//ç”±äºæ— æ³•æ‰‹åŠ¨æ‹¿åˆ°codeï¼Œæ‰€ä»¥ä½œå¼Šä¸€ä¸‹
-        editor1.putString("userpwd", "111");//ç”±äºæ— æ³•æ‰‹åŠ¨æ‹¿åˆ°codeï¼Œæ‰€ä»¥ä½œå¼Šä¸€ä¸‹
+        editor1.putString("username", "2797037168@qq.com");//ÓÉÓÚÎŞ·¨ÊÖ¶¯ÄÃµ½code£¬ËùÒÔ×÷±×Ò»ÏÂ
+        editor1.putString("userpwd", "111");//ÓÉÓÚÎŞ·¨ÊÖ¶¯ÄÃµ½code£¬ËùÒÔ×÷±×Ò»ÏÂ
         editor1.commit();
         if (name.equals("2797037168@qq.com") && pwd.equals("111")) {
             return true;
@@ -78,17 +78,17 @@ public class NetUtil {
 
 
 
-//        System.out.println("è°ƒç”¨NETUtilçš„loginæ–¹æ³•");
+//        System.out.println("µ÷ÓÃNETUtilµÄlogin·½·¨");
 //        String apikey = "04c0319d59f7e2370e4094d80de7a6a5";
 //        String secret = "830f91dc993dd2f3";
-//        System.out.println("è°ƒç”¨PlayGroundæ–¹æ³•");
+//        System.out.println("µ÷ÓÃPlayGround·½·¨");
 //        PlayGround playGround = new PlayGround();
 //        AccessToken accessToken = playGround.testAccessToken1(name,pwd,captcha,captchaid,context);
-//        System.out.println("æ‹¿åˆ°tokens");
+//        System.out.println("ÄÃµ½tokens");
 //
-////        System.out.println("ä½ å¥½AccessToken" + accessToken.getAccessToken());
-////        System.out.println("ä½ å¥½RefreshToken" + accessToken.getRefreshToken());
-////        System.out.println("ä½ å¥½DoubanUserId" + accessToken.getDoubanUserId());
+////        System.out.println("ÄãºÃAccessToken" + accessToken.getAccessToken());
+////        System.out.println("ÄãºÃRefreshToken" + accessToken.getRefreshToken());
+////        System.out.println("ÄãºÃDoubanUserId" + accessToken.getDoubanUserId());
 //
 //        SharedPreferences sp = context.getSharedPreferences("config", Context.MODE_PRIVATE);
 //        SharedPreferences.Editor editor = sp.edit();
@@ -101,19 +101,19 @@ public class NetUtil {
 
 
 
-//        //è±†ç“£ç”³è¯·çš„apiKeyå’Œsecret
+//        //¶¹°êÉêÇëµÄapiKeyºÍsecret
 //        if (name.equals("2797037168@qq.com")&&pwd.equals("2797037168liufang")&&context.getResources().getString(R.string.access_token).equals("a79a9a020803df5df6cfce06180b9e17")){
 //            return true;
 //        }
-//        System.out.println("è°ƒç”¨äº†loginæ–¹æ³•");
+//        System.out.println("µ÷ÓÃÁËlogin·½·¨");
 //        String apiKey="04c0319d59f7e2370e4094d80de7a6a5";
 //        String secret="830f91dc993dd2f3";
 //        String url="https://www.douban.com/service/auth2/auth?"+"client_id="+apiKey+"&redirect_uri=https://myapp.com/callback&"+"response_type=code&"+"scope=shuo_basic_r,shuo_basic_w";
-//        //æ‰‹åŠ¨è·å–codeï¼Œ
+//        //ÊÖ¶¯»ñÈ¡code£¬
 //        String code="e0aa3bf527e71916";
 //        String url2="https://www.douban.com/service/auth2/token?client_id="+apiKey+"&client_secret="+secret+"&redirect_uri=https://myapp.com/callback&grant_type=authorization_code&code="+code;
-//        //postè¯·æ±‚è·å–access code
-//        //å‘é€ POST è¯·æ±‚
+//        //postÇëÇó»ñÈ¡access code
+//        //·¢ËÍ POST ÇëÇó
 //        String sr=sendPost(url2);
 //        System.out.println(sr);
 //        String access_token="a79a9a020803df5df6cfce06180b9e17";
@@ -121,8 +121,8 @@ public class NetUtil {
 //        return  true;
 
 
-        //è™šæ‹Ÿæµè§ˆå™¨ç‚¹å‡»æˆæƒã€‚
-          //æ‰“å¼€ç™»å½•ç•Œé¢ï¼Œä¿å­˜cookieã€‚è‹¥å·²ç™»å½•åˆ™å¸¦ç€cookieè¿›è¡ŒéªŒè¯
+        //ĞéÄâä¯ÀÀÆ÷µã»÷ÊÚÈ¨¡£
+          //´ò¿ªµÇÂ¼½çÃæ£¬±£´æcookie¡£ÈôÒÑµÇÂ¼Ôò´ø×Åcookie½øĞĞÑéÖ¤
 //        HttpPost httppost = new HttpPost("http://www.douban.com/accounts/login");
 //        List<NameValuePair> namevaluepairs  = new ArrayList<NameValuePair>();
 //        namevaluepairs.add(new BasicNameValuePair("source", "None"));
@@ -131,20 +131,20 @@ public class NetUtil {
 //        namevaluepairs.add(new BasicNameValuePair("form_password", pwd));
 //        namevaluepairs.add(new BasicNameValuePair("captcha-solution",captcha));
 //        namevaluepairs.add(new BasicNameValuePair("captcha-id",captchaid));
-//        namevaluepairs.add(new BasicNameValuePair("user_login", "ç™»å½•"));
+//        namevaluepairs.add(new BasicNameValuePair("user_login", "µÇÂ¼"));
 //        UrlEncodedFormEntity entity = new UrlEncodedFormEntity(namevaluepairs,"utf-8");
 //        httppost.setEntity(entity);
-//        //  åˆ›å»ºä¸€ä¸ªæµè§ˆå™¨
+//        //  ´´½¨Ò»¸öä¯ÀÀÆ÷
 //        DefaultHttpClient client = new DefaultHttpClient();
-//        // å®Œæˆäº†ç”¨æˆ·ç™»é™†è±†ç“£çš„æ“ä½œ
+//        // Íê³ÉÁËÓÃ»§µÇÂ½¶¹°êµÄ²Ù×÷
 //        HttpResponse response = client.execute(httppost);
-//        System.out.print("è¿™æ˜¯çŠ¶æ€ç ");
+//        System.out.print("ÕâÊÇ×´Ì¬Âë");
 //        System.out.println(response.getStatusLine().getStatusCode());
 //
 //
 //        System.out.println(SendGET(url));
 //
-//                // è·å–ç™»é™†æˆåŠŸçš„cookie,å¹¶æ¨¡æ‹ŸåŒæ„æŒ‰é’®
+//                // »ñÈ¡µÇÂ½³É¹¦µÄcookie,²¢Ä£ÄâÍ¬Òâ°´Å¥
 //        CookieStore cookie =  client.getCookieStore();
 //        HttpPost post1 = new HttpPost(url);
 ////        String oauth_token =  url.substring(url.lastIndexOf("=")+1, url.length());
@@ -154,35 +154,35 @@ public class NetUtil {
 ////        namevaluepairs1.add(new BasicNameValuePair("oauth_token",oauth_token));
 ////        namevaluepairs1.add(new BasicNameValuePair("oauth_callback",""));
 //        namevaluepairs1.add(new BasicNameValuePair("ssid", "9861e703"));
-//        namevaluepairs1.add(new BasicNameValuePair("confirm", "æˆæƒ"));
+//        namevaluepairs1.add(new BasicNameValuePair("confirm", "ÊÚÈ¨"));
 //        UrlEncodedFormEntity entity1 = new UrlEncodedFormEntity(namevaluepairs1,"utf-8");
 //        post1.setEntity(entity1);
 //        DefaultHttpClient client2 = new DefaultHttpClient();
 //        client2.setCookieStore(cookie);
 //        HttpResponse  respose1 =   client2.execute(post1);
 //
-//        System.out.print("æ‰“å°respose1");
+//        System.out.print("´òÓ¡respose1");
 //        System.out.print(respose1);
-        //è·å–code
+        //»ñÈ¡code
 
 
 //        HttpGet httpRequest =new HttpGet(url);
 //        try
 //        {
-//            //å–å¾—HttpClientå¯¹è±¡
+//            //È¡µÃHttpClient¶ÔÏó
 //            DefaultHttpClient httpclient = new DefaultHttpClient();
-//            //è¯·æ±‚HttpClientï¼Œå–å¾—HttpResponse
+//            //ÇëÇóHttpClient£¬È¡µÃHttpResponse
 //            HttpResponse httpResponse = httpclient.execute(httpRequest);
-//            //è¯·æ±‚æˆåŠŸ
+//            //ÇëÇó³É¹¦
 //            if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK)
 //            {
-//                //å–å¾—è¿”å›çš„å­—ç¬¦ä¸²
+//                //È¡µÃ·µ»ØµÄ×Ö·û´®
 //                String strResult = EntityUtils.toString(httpResponse.getEntity());
 //                System.out.print(strResult);
 //            }
 //            else
 //            {
-//                System.out.print("è¯·æ±‚é”™è¯¯!");
+//                System.out.print("ÇëÇó´íÎó!");
 //            }
 //        }
 //        catch (ClientProtocolException e)
@@ -205,13 +205,13 @@ public class NetUtil {
 
 
         //
-//        DoubanService myService=new DoubanService("è±†ç“£è¯»ä¹¦douban",apiKey,secret);
+//        DoubanService myService=new DoubanService("¶¹°ê¶ÁÊédouban",apiKey,secret);
 //        System.out.print("please:");
 //        String url1=myService.getAuthorizationUrl(null);
 //        System.out.print(url1);
 
 
-//        DoubanService myService=new DoubanService("è±†ç“£è¯»ä¹¦douban",apiKey,secret);
+//        DoubanService myService=new DoubanService("¶¹°ê¶ÁÊédouban",apiKey,secret);
 //        System.out.print("please:");
 //        String url=myService.getAuthorizationUrl(null);
 //        byte buffer[]=new byte[1];
@@ -224,10 +224,10 @@ public class NetUtil {
 //
 //
 //
-//        //è·å–æˆæƒåœ°å€
+//        //»ñÈ¡ÊÚÈ¨µØÖ·
 //
 //        HttpPost httppost = new HttpPost("http://www.douban.com/accounts/login");
-//        //è®¾ç½®http postè¯·æ±‚æäº¤çš„æ•°æ®
+//        //ÉèÖÃhttp postÇëÇóÌá½»µÄÊı¾İ
 //        List<NameValuePair> namevaluepairs  = new ArrayList<NameValuePair>();
 //        namevaluepairs.add(new BasicNameValuePair("source", "simple"));
 //        namevaluepairs.add(new BasicNameValuePair("redir", "http://www.douban.com"));
@@ -236,25 +236,25 @@ public class NetUtil {
 //        namevaluepairs.add(new BasicNameValuePair("captcha-solution",captcha));
 //        namevaluepairs.add(new BasicNameValuePair("captcha-id",captchaid));
 //
-//        namevaluepairs.add(new BasicNameValuePair("user_login", "ç™»å½•"));
+//        namevaluepairs.add(new BasicNameValuePair("user_login", "µÇÂ¼"));
 //
 //        UrlEncodedFormEntity entity = new UrlEncodedFormEntity(namevaluepairs,"utf-8");
 //        httppost.setEntity(entity);
-//        //  åˆ›å»ºä¸€ä¸ªæµè§ˆå™¨
+//        //  ´´½¨Ò»¸öä¯ÀÀÆ÷
 //        DefaultHttpClient client = new DefaultHttpClient();
-//        // å®Œæˆäº†ç”¨æˆ·ç™»é™†è±†ç“£çš„æ“ä½œ
+//        // Íê³ÉÁËÓÃ»§µÇÂ½¶¹°êµÄ²Ù×÷
 //        HttpResponse response = client.execute(httppost);
 //        System.out.println(response.getStatusLine().getStatusCode());
 //        Source source  = new Source(response.getEntity().getContent());
 //        System.out.println( source.toString());
 //
 //
-//        // è·å–ç™»é™†æˆåŠŸçš„cookie
+//        // »ñÈ¡µÇÂ½³É¹¦µÄcookie
 //        CookieStore cookie =  client.getCookieStore();
 //
 //
-//        //å¸¦ç€cookieè®¿é—®è±†ç“£è®¤è¯ç½‘ç«™
-//        // æ¨¡æ‹Ÿç”¨æˆ·ç‚¹å‡» åŒæ„æŒ‰é’®
+//        //´ø×Åcookie·ÃÎÊ¶¹°êÈÏÖ¤ÍøÕ¾
+//        // Ä£ÄâÓÃ»§µã»÷ Í¬Òâ°´Å¥
 //        //ck=Rw1e&oauth_token=6817c2017cc375dc38474604764a6194&
 //        //oauth_callback=&ssid=9d9af9b0&confirm=%E5%90%8C%E6%84%8F
 //
@@ -267,7 +267,7 @@ public class NetUtil {
 //        namevaluepairs1.add(new BasicNameValuePair("oauth_token",oauth_token));
 //        namevaluepairs1.add(new BasicNameValuePair("oauth_callback",""));
 //        namevaluepairs1.add(new BasicNameValuePair("ssid","9d9af9b0"));
-//        namevaluepairs1.add(new BasicNameValuePair("confirm","åŒæ„"));
+//        namevaluepairs1.add(new BasicNameValuePair("confirm","Í¬Òâ"));
 //        UrlEncodedFormEntity entity1 = new UrlEncodedFormEntity(namevaluepairs1,"utf-8");
 //        post1.setEntity(entity1);
 //        DefaultHttpClient client2 = new DefaultHttpClient();
@@ -283,7 +283,7 @@ public class NetUtil {
 //        is.close();
 //        System.out.println(new String( bos.toByteArray()));
 //
-//        //3. è·å–åˆ°æˆæƒåçš„ä»¤ç‰Œå’Œå¯†é’¥
+//        //3. »ñÈ¡µ½ÊÚÈ¨ºóµÄÁîÅÆºÍÃÜÔ¿
 //        ArrayList<String>  tokens = myService.getAccessToken();
 //        String accesstoken = tokens.get(0);
 //        String tokensecret = tokens.get(1);
@@ -299,10 +299,10 @@ public class NetUtil {
     }
 
     /**
-     * è·å–æ–°ä¹¦æ•°æ® */
+     * »ñÈ¡ĞÂÊéÊı¾İ */
     public static List<NewBook> getNewBooks(Context context ) throws Exception{
         String path =context.getResources().getString(R.string.newbookpath);
-        System.out.println("è·å–æ–°ä¹¦æ•°æ®");
+        System.out.println("»ñÈ¡ĞÂÊéÊı¾İ");
         URL url = new URL(path);
         URLConnection conn = url.openConnection();
         Source source = new Source(conn);
@@ -315,7 +315,7 @@ public class NetUtil {
 
                 if("detail-frame".equals(childrenlists.get(0).getAttributeValue("class"))){
                     NewBook newbook = new NewBook();
-                    //æ•°ç›®å¯¹åº”çš„divä¿¡æ¯
+                    //ÊıÄ¿¶ÔÓ¦µÄdivĞÅÏ¢
                     Element div = childrenlists.get(0);
                     List<Element> divChildren = div.getChildElements();
                     String name = divChildren.get(0).getTextExtractor().toString();
@@ -372,43 +372,43 @@ public class NetUtil {
 
 
     /*
-    * è®¿é—®urlå¹¶ä¸”è·å–è¿”å›ç»“æœ*/
+    * ·ÃÎÊurl²¢ÇÒ»ñÈ¡·µ»Ø½á¹û*/
     public static String SendGET(String url) {
-        String result = "";//è®¿é—®è¿”å›ç»“æœ
-        BufferedReader read = null;//è¯»å–è®¿é—®ç»“æœ
+        String result = "";//·ÃÎÊ·µ»Ø½á¹û
+        BufferedReader read = null;//¶ÁÈ¡·ÃÎÊ½á¹û
 
         try {
-            //åˆ›å»ºurl
+            //´´½¨url
             System.out.print(111);
             System.out.print(url);
             URL realurl = new URL(url);
-            //æ‰“å¼€è¿æ¥
+            //´ò¿ªÁ¬½Ó
             URLConnection connection = realurl.openConnection();
-            // è®¾ç½®é€šç”¨çš„è¯·æ±‚å±æ€§
+            // ÉèÖÃÍ¨ÓÃµÄÇëÇóÊôĞÔ
             connection.setRequestProperty("accept", "*/*");
             connection.setRequestProperty("connection", "Keep-Alive");
 //            connection.setRequestProperty("<a href="https://www.baidu.com/s?wd=user-agent&tn=44039180_cpr&fenlei=mv6quAkxTZn0IZRqIHckPjm4nH00T1dWmWwBnWKWnhcznAc3uW7h0AP8IA3qPjfsn1bkrjKxmLKz0ZNzUjdCIZwsrBtEXh9GuA7EQhF9pywdQhPEUiqkIyN1IA-EUBtkrjDLPWTkPjn3nHbLrHTLn163" target="_blank" class="baidu-highlight">user-agent</a>",
 //            "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
-            //å»ºç«‹è¿æ¥
+            //½¨Á¢Á¬½Ó
             connection.connect();
 
 
-            // è·å–æ‰€æœ‰å“åº”å¤´å­—æ®µ
+            // »ñÈ¡ËùÓĞÏìÓ¦Í·×Ö¶Î
             Map<String, List<String>> map = connection.getHeaderFields();
-            // éå†æ‰€æœ‰çš„å“åº”å¤´å­—æ®µï¼Œè·å–åˆ°cookiesç­‰
+            // ±éÀúËùÓĞµÄÏìÓ¦Í·×Ö¶Î£¬»ñÈ¡µ½cookiesµÈ
             for (String key : map.keySet()) {
                 System.out.println(key + "--->" + map.get(key));
             }
-            // å®šä¹‰ BufferedReaderè¾“å…¥æµæ¥è¯»å–URLçš„å“åº”
+            // ¶¨Òå BufferedReaderÊäÈëÁ÷À´¶ÁÈ¡URLµÄÏìÓ¦
             read = new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"));
-            String line;//å¾ªç¯è¯»å–
+            String line;//Ñ­»·¶ÁÈ¡
             while ((line = read.readLine()) != null) {
                 result += line;
             }
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            if (read != null) {//å…³é—­æµ
+            if (read != null) {//¹Ø±ÕÁ÷
                 try {
                     read.close();
                 } catch (IOException e) {
@@ -421,30 +421,30 @@ public class NetUtil {
     }
 
     /*
-    * å‘é€postè¯·æ±‚*/
+    * ·¢ËÍpostÇëÇó*/
     public static String sendPost(String url) {
         PrintWriter out = null;
         BufferedReader in = null;
         String result = "";
         try {
             URL realUrl = new URL(url);
-            // æ‰“å¼€å’ŒURLä¹‹é—´çš„è¿æ¥
+            // ´ò¿ªºÍURLÖ®¼äµÄÁ¬½Ó
             URLConnection conn = realUrl.openConnection();
-            // è®¾ç½®é€šç”¨çš„è¯·æ±‚å±æ€§
+            // ÉèÖÃÍ¨ÓÃµÄÇëÇóÊôĞÔ
             conn.setRequestProperty("accept", "*/*");
             conn.setRequestProperty("connection", "Keep-Alive");
             conn.setRequestProperty("user-agent",
                     "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
-            // å‘é€POSTè¯·æ±‚å¿…é¡»è®¾ç½®å¦‚ä¸‹ä¸¤è¡Œ
+            // ·¢ËÍPOSTÇëÇó±ØĞëÉèÖÃÈçÏÂÁ½ĞĞ
             conn.setDoOutput(true);
             conn.setDoInput(true);
-            // è·å–URLConnectionå¯¹è±¡å¯¹åº”çš„è¾“å‡ºæµ
+            // »ñÈ¡URLConnection¶ÔÏó¶ÔÓ¦µÄÊä³öÁ÷
             out = new PrintWriter(conn.getOutputStream());
-            // å‘é€è¯·æ±‚å‚æ•°
+            // ·¢ËÍÇëÇó²ÎÊı
             //out.print(param);
-            // flushè¾“å‡ºæµçš„ç¼“å†²
+            // flushÊä³öÁ÷µÄ»º³å
             out.flush();
-            // å®šä¹‰BufferedReaderè¾“å…¥æµæ¥è¯»å–URLçš„å“åº”
+            // ¶¨ÒåBufferedReaderÊäÈëÁ÷À´¶ÁÈ¡URLµÄÏìÓ¦
             in = new BufferedReader(
                     new InputStreamReader(conn.getInputStream()));
             String line;
@@ -452,10 +452,10 @@ public class NetUtil {
                 result += line;
             }
         } catch (Exception e) {
-            System.out.println("å‘é€ POST è¯·æ±‚å‡ºç°å¼‚å¸¸ï¼" + e);
+            System.out.println("·¢ËÍ POST ÇëÇó³öÏÖÒì³££¡" + e);
             e.printStackTrace();
         }
-        //ä½¿ç”¨finallyå—æ¥å…³é—­è¾“å‡ºæµã€è¾“å…¥æµ
+        //Ê¹ÓÃfinally¿éÀ´¹Ø±ÕÊä³öÁ÷¡¢ÊäÈëÁ÷
         finally {
             try {
                 if (out != null) {
@@ -472,7 +472,7 @@ public class NetUtil {
     }
 //
 //    /*
-//    * è·å–ä¹¦ç±ä¿¡æ¯*/
+//    * »ñÈ¡Êé¼®ĞÅÏ¢*/
 //    public static List<NewBook> getNewBooks() throws Exception {
 //        String path = "http://book.douban.com/latest";
 //        URL url = new URL(path);
@@ -486,7 +486,7 @@ public class NetUtil {
 //            if (childrenlists.size() == 2) {
 //                if ("detail-frame".equals(childrenlists.get(0).getAttributeValue("class"))) {
 //                    NewBook newbook = new NewBook();
-//                    //æ•°ç›®å¯¹åº”çš„divä¿¡æ¯
+//                    //ÊıÄ¿¶ÔÓ¦µÄdivĞÅÏ¢
 //                    Element div = childrenlists.get(0);
 //                    List<Element> divChildren = div.getChildElements();
 //                    String name = divChildren.get(0).getTextExtractor().toString();

@@ -41,9 +41,9 @@ public class MyReadActivity extends BaseActivity implements OnItemClickListener 
 	MyReadAdapter adapter;
 	// Map<String,Bitmap> iconCache;
 	Map<String, SoftReference<Bitmap>> iconCache;
-	int startindex; // å¼€å§‹è·å–å†…å®¹çš„id
+	int startindex; // ¿ªÊ¼»ñÈ¡ÄÚÈİµÄid
 	int count;
-	int max = 100;//è®¾ç½®æœ€å¤§çš„åŠ è½½æ¡ç›®
+	int max = 100;//ÉèÖÃ×î´óµÄ¼ÓÔØÌõÄ¿
 	boolean isloading = false;
 	IntentFilter filter;
 	KillReceiver receiver ;
@@ -53,7 +53,7 @@ public class MyReadActivity extends BaseActivity implements OnItemClickListener 
 		super.onCreate(savedInstanceState);
 		startindex = 1;
 		count = 5;
-		// åˆå§‹åŒ–å†…å­˜ç¼“å­˜
+		// ³õÊ¼»¯ÄÚ´æ»º´æ
 		iconCache = new HashMap<String, SoftReference<Bitmap>>();
 
 		back_button= (ImageButton) findViewById(R.id.back_button);
@@ -79,18 +79,18 @@ public class MyReadActivity extends BaseActivity implements OnItemClickListener 
 			public void onScrollStateChanged(AbsListView view, int scrollState) {
 				switch (scrollState) {
 					case OnScrollListener.SCROLL_STATE_IDLE:
-						// å¦‚æœå½“å‰æ»šåŠ¨çŠ¶æ€ä¸ºé™æ­¢çŠ¶æ€
-						// å¹¶ä¸”listviewé‡Œé¢æœ€åä¸€ä¸ªç”¨æˆ·å¯è§çš„æ¡ç›® å†…å®¹ ç­‰äºlistviewæ•°æ®é€‚é…å™¨é‡Œé¢çš„æœ€åä¸€ä¸ªæ¡ç›®
-						// è·å–listviewä¸­æœ€åä¸€ä¸ªç”¨æˆ·å¯è§æ¡ç›®çš„ä½ç½®
+						// Èç¹ûµ±Ç°¹ö¶¯×´Ì¬Îª¾²Ö¹×´Ì¬
+						// ²¢ÇÒlistviewÀïÃæ×îºóÒ»¸öÓÃ»§¿É¼ûµÄÌõÄ¿ ÄÚÈİ µÈÓÚlistviewÊı¾İÊÊÅäÆ÷ÀïÃæµÄ×îºóÒ»¸öÌõÄ¿
+						// »ñÈ¡listviewÖĞ×îºóÒ»¸öÓÃ»§¿É¼ûÌõÄ¿µÄÎ»ÖÃ
 						int positon = view.getLastVisiblePosition();
-						System.out.println("æœ€åä¸€ä¸ªå¯è§æ¡ç›®çš„ä½ç½® " + positon);
+						System.out.println("×îºóÒ»¸ö¿É¼ûÌõÄ¿µÄÎ»ÖÃ " + positon);
 						int totalcount = adapter.getCount();
-						System.out.println("listview æ¡ç›®çš„æ•°ç›® " + totalcount);
-						if (positon == (totalcount - 1)) {// ä»£è¡¨å½“å‰ç•Œé¢æ‹–åŠ¨åˆ°äº†æœ€ä¸‹æ–¹
-							// è·å–æ›´å¤šçš„æ•°æ®
+						System.out.println("listview ÌõÄ¿µÄÊıÄ¿ " + totalcount);
+						if (positon == (totalcount - 1)) {// ´ú±íµ±Ç°½çÃæÍÏ¶¯µ½ÁË×îÏÂ·½
+							// »ñÈ¡¸ü¶àµÄÊı¾İ
 							startindex = startindex + count;
 							if (startindex > max) {
-								showToast("æ•°æ®å·²ç»åŠ è½½åˆ°æœ€å¤§æ¡ç›®");
+								showToast("Êı¾İÒÑ¾­¼ÓÔØµ½×î´óÌõÄ¿");
 								return;
 							}
 							if (isloading) {
@@ -114,7 +114,7 @@ public class MyReadActivity extends BaseActivity implements OnItemClickListener 
 
 	@Override
 	public void fillData() {
-		// é€šè¿‡å¼‚æ­¥ä»»åŠ¡ è·å–æ•°æ® ç„¶åæ˜¾ç¤ºåˆ°ç•Œé¢ä¸Š
+		// Í¨¹ıÒì²½ÈÎÎñ »ñÈ¡Êı¾İ È»ºóÏÔÊ¾µ½½çÃæÉÏ
 		new AsyncTask<Void, Void, List<Book>>() {
 
 			@Override
@@ -133,21 +133,21 @@ public class MyReadActivity extends BaseActivity implements OnItemClickListener 
 						adapter = new MyReadAdapter(result);
 						subjectlist.setAdapter(adapter);
 					} else {
-						// æŠŠæ–°è·å–åˆ°çš„æ•°æ® åŠ åˆ°listviewçš„æ•°æ®é€‚é…å™¨é‡Œé¢
-						// é€šçŸ¥ç•Œé¢æ›´æ–°å†…å®¹
+						// °ÑĞÂ»ñÈ¡µ½µÄÊı¾İ ¼Óµ½listviewµÄÊı¾İÊÊÅäÆ÷ÀïÃæ
+						// Í¨Öª½çÃæ¸üĞÂÄÚÈİ
 						adapter.addMoreBook(result);
-						// é€šçŸ¥æ•°æ®é€‚é…å™¨æ›´æ–°æ•°æ®
+						// Í¨ÖªÊı¾İÊÊÅäÆ÷¸üĞÂÊı¾İ
 						adapter.notifyDataSetChanged();
 					}
 				} else {
-					showToast("è·å–æ•°æ®å¤±è´¥");
+					showToast("»ñÈ¡Êı¾İÊ§°Ü");
 				}
 				isloading = false;
 			}
 
 			@Override
 			protected List<Book> doInBackground(Void... params) {
-				//æ‹¿åˆ°bookä¿¡æ¯
+				//ÄÃµ½bookĞÅÏ¢
 				DoubanCollectionServiceTest doubanCollectionServiceTest=new DoubanCollectionServiceTest();
 				try {
 					sharedPreferences=getSharedPreferences("config", Context.MODE_PRIVATE);
@@ -222,8 +222,8 @@ public class MyReadActivity extends BaseActivity implements OnItemClickListener 
 //						book.setName(title);
 //						book.setDescription(col.getUpdateTime());
 //
-//						book.setRating((float) 7.5); //æ‰‹åŠ¨è®¾ç½®çš„ã€‚ã€‚ã€‚ã€‚
-//						book.setBookurl("https://img3.doubanio.com/lpic/s28349261.jpg");//æ‰‹åŠ¨ã€‚ã€‚æ‚è„¸
+//						book.setRating((float) 7.5); //ÊÖ¶¯ÉèÖÃµÄ¡£¡£¡£¡£
+//						book.setBookurl("https://img3.doubanio.com/lpic/s28349261.jpg");//ÊÖ¶¯¡£¡£ÎæÁ³
 //						books.add(book);
 //
 ////						System.out.println("col title : " + col.getTitle());
@@ -239,7 +239,7 @@ public class MyReadActivity extends BaseActivity implements OnItemClickListener 
 //				try {
 //					UserEntry ue = myService.getAuthorizedUser();
 //					String uid = ue.getUid();
-//					// é¦–å…ˆè·å–ç”¨æˆ·çš„ æ‰€æœ‰æ”¶é›†çš„ä¿¡æ¯
+//					// Ê×ÏÈ»ñÈ¡ÓÃ»§µÄ ËùÓĞÊÕ¼¯µÄĞÅÏ¢
 //					CollectionFeed feeds = myService.getUserCollections(uid,
 //							"book", null, null, startindex, count);
 //					List<Book> books = new ArrayList<Book>();
@@ -291,9 +291,9 @@ public class MyReadActivity extends BaseActivity implements OnItemClickListener 
 		}.execute();
 	}
 
-	//ç‚¹å‡»æ¯ä¸ªæ¡ç›®æ‰€å¯¹åº”çš„ç‚¹å‡»äº‹ä»¶
+	//µã»÷Ã¿¸öÌõÄ¿Ëù¶ÔÓ¦µÄµã»÷ÊÂ¼ş
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-		System.out.println("ç‚¹å‡»æ¡ç›®");
+		System.out.println("µã»÷ÌõÄ¿");
 		Book book =(Book) subjectlist.getItemAtPosition(position);
 		Intent intent = new Intent(this,BookDetailActivity.class);
 		intent.putExtra("SubjectId", book.getSubjectId());
@@ -344,7 +344,7 @@ public class MyReadActivity extends BaseActivity implements OnItemClickListener 
 			}
 			tv_description.setText(book.getUpdated()+"\n"+book.getSummary());
 			tv_title.setText(book.getTitle());
-			// åˆ¤æ–­ å›¾ç‰‡æ˜¯å¦åœ¨sdå¡ä¸Šå­˜åœ¨
+			// ÅĞ¶Ï Í¼Æ¬ÊÇ·ñÔÚsd¿¨ÉÏ´æÔÚ
 			String iconpath = book.getImageUrl();
 //			System.out.println("iconpath"+iconpath);
 //			System.out.println("book"+book);
@@ -354,7 +354,7 @@ public class MyReadActivity extends BaseActivity implements OnItemClickListener 
 			 * File file = new File("/sdcard/" + iconname);
 			 * if (file.exists()) {
 			 * iv_book.setImageURI(Uri.fromFile(file));
-			 * System.out.println("ä½¿ç”¨sdå¡ç¼“å­˜"); } else {
+			 * System.out.println("Ê¹ÓÃsd¿¨»º´æ"); } else {
 			 */
 
 			if (iconCache.containsKey(iconname)) {
@@ -362,7 +362,7 @@ public class MyReadActivity extends BaseActivity implements OnItemClickListener 
 				if (softref != null) {
 					Bitmap bitmap = softref.get();
 					if (bitmap != null) {
-						System.out.println("ä½¿ç”¨å†…å­˜ç¼“å­˜ ");
+						System.out.println("Ê¹ÓÃÄÚ´æ»º´æ ");
 						iv_book.setImageBitmap(bitmap);
 					} else {
 						loadimage(iv_book, book, iconname);
@@ -388,17 +388,17 @@ public class MyReadActivity extends BaseActivity implements OnItemClickListener 
 
 						public void afterLoadImage(Bitmap bitmap) {
 							if (bitmap != null) {
-								System.out.println("ä¸‹è½½æœåŠ¡å™¨å›¾ç‰‡");
+								System.out.println("ÏÂÔØ·şÎñÆ÷Í¼Æ¬");
 								iv_book.setImageBitmap(bitmap);
 								/*
-								 * // æŠŠbitmapå­˜æ”¾åˆ°sdå¡ä¸Š try { File file = new
+								 * // °Ñbitmap´æ·Åµ½sd¿¨ÉÏ try { File file = new
 								 * File("/sdcard/" + iconname); FileOutputStream
 								 * stream = new FileOutputStream( file);
 								 * bitmap.compress(CompressFormat.JPEG, 100,
 								 * stream); } catch (Exception e) {
 								 * e.printStackTrace(); }
 								 */
-								// æŠŠå›¾ç‰‡å­˜æ”¾åˆ°å†…å­˜ç¼“å­˜é‡Œé¢
+								// °ÑÍ¼Æ¬´æ·Åµ½ÄÚ´æ»º´æÀïÃæ
 								iconCache.put(iconname,
 										new SoftReference<Bitmap>(bitmap));
 
@@ -419,7 +419,7 @@ public class MyReadActivity extends BaseActivity implements OnItemClickListener 
 		public void onReceive(Context context, Intent intent) {
 			
 			iconCache = null;
-			showToast("å†…å­˜ä¸è¶³activityé€€å‡º");
+			showToast("ÄÚ´æ²»×ãactivityÍË³ö");
 			finish();
 		}
 		

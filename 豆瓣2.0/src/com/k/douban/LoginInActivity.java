@@ -33,30 +33,30 @@ public class LoginInActivity extends Activity implements View.OnClickListener {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            progressDialog.dismiss();//æ¥æ”¶åˆ°æ¶ˆæ¯ä¹‹åï¼Œè®©å…¶æ¶ˆå¤±
+            progressDialog.dismiss();//½ÓÊÕµ½ÏûÏ¢Ö®ºó£¬ÈÃÆäÏûÊ§
             switch (msg.what) {
                 case NEED_CAPTCHA:
                     mCaptchaLinearLayout.setVisibility(View.VISIBLE);
                     Bitmap bitmap = (Bitmap) msg.obj;
                     mImageViewCaptcha.setImageBitmap(bitmap);
-                    Toast.makeText(getApplicationContext(), "éœ€è¦éªŒè¯ç ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "ĞèÒªÑéÖ¤Âë", Toast.LENGTH_SHORT).show();
                     break;
                 case NOT_NEED_CAPTCHA:
                     mCaptchaLinearLayout.setVisibility(View.GONE);
-                    Toast.makeText(getApplicationContext(), "ä¸éœ€éªŒè¯ç ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "²»ĞèÑéÖ¤Âë", Toast.LENGTH_SHORT).show();
                     break;
                 case GET_CAPTCHA_ERROR:
-                    Toast.makeText(getApplicationContext(), "æŸ¥è¯¢éªŒè¯ç å¤±è´¥", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "²éÑ¯ÑéÖ¤ÂëÊ§°Ü", Toast.LENGTH_SHORT).show();
                     break;
                 case LOGIN_SUCCESS:
                     finish();
-//                    Toast.makeText(getApplicationContext(),"ç™»å½•æˆåŠŸ",Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getApplicationContext(),"µÇÂ¼³É¹¦",Toast.LENGTH_SHORT).show();
                     break;
                 case LOGIN_FAIL:
-                    Toast.makeText(getApplicationContext(), "ç™»å½•å¤±è´¥", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "µÇÂ¼Ê§°Ü", Toast.LENGTH_SHORT).show();
                     break;
                 case LOGIN_FAIL_ERROR:
-                    Toast.makeText(getApplicationContext(), "ç™»å½•å¤±è´¥,ERROR", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "µÇÂ¼Ê§°Ü,ERROR", Toast.LENGTH_SHORT).show();
                     break;
             }
         }
@@ -67,14 +67,14 @@ public class LoginInActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
-        //èµ‹å€¼æ§ä»¶
-        //æ·»åŠ ç‚¹å‡»äº‹ä»¶
+        //¸³Öµ¿Ø¼ş
+        //Ìí¼Óµã»÷ÊÂ¼ş
         setupView();
         setLinster();
     }
 
     /**
-     * åˆå§‹åŒ–æ§ä»¶*/
+     * ³õÊ¼»¯¿Ø¼ş*/
     private void setupView() {
         mNameEditText = (EditText) this.findViewById(R.id.EditTextEmail);
         mPwdEditText = (EditText) this.findViewById(R.id.EditTextPassword);
@@ -83,17 +83,17 @@ public class LoginInActivity extends Activity implements View.OnClickListener {
         mImageViewCaptcha = (ImageView) this.findViewById(R.id.ImageViewCaptcha);
         btnExit = (Button) findViewById(R.id.btnExit);
         btnLogin = (Button) findViewById(R.id.btnLogin);
-        //åˆ¤æ–­æ˜¯å¦éœ€è¦éªŒè¯ç ,å¹¶å¯åŠ¨çº¿ç¨‹å’Œè·å–å›¾ç‰‡
+        //ÅĞ¶ÏÊÇ·ñĞèÒªÑéÖ¤Âë,²¢Æô¶¯Ïß³ÌºÍ»ñÈ¡Í¼Æ¬
         getCaptcha();
 
 
     }
 
     /**
-     * è·å–éªŒè¯ç */
+     * »ñÈ¡ÑéÖ¤Âë*/
     private void getCaptcha() {
         progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("æ­£åœ¨æŸ¥è¯¢éªŒè¯ç ");
+        progressDialog.setMessage("ÕıÔÚ²éÑ¯ÑéÖ¤Âë");
         progressDialog.show();
         new Thread() {
             @Override
@@ -101,9 +101,9 @@ public class LoginInActivity extends Activity implements View.OnClickListener {
                 try {
                     result = NetUtil.isNeedCaptcha(getApplicationContext());
                     if (result != null) {
-                        //è·å–éªŒè¯ç æ‰€å¯¹åº”çš„å›¾ç‰‡
+                        //»ñÈ¡ÑéÖ¤ÂëËù¶ÔÓ¦µÄÍ¼Æ¬
                         String imagePath = getResources().getString(R.string.captchaurl) + result + "&amp;size=s";
-                        Bitmap bitmap = NetUtil.getImage(imagePath); //æ‹¿åˆ°å›¾ç‰‡
+                        Bitmap bitmap = NetUtil.getImage(imagePath); //ÄÃµ½Í¼Æ¬
 
                         Message message = new Message();
                         message.what = NEED_CAPTCHA;
@@ -125,11 +125,11 @@ public class LoginInActivity extends Activity implements View.OnClickListener {
     }
 
     /**
-     * è®¾ç½®ç‚¹å‡»äº‹ä»¶*/
+     * ÉèÖÃµã»÷ÊÂ¼ş*/
     private void setLinster() {
         btnExit.setOnClickListener(this);
         btnLogin.setOnClickListener(this);
-        mImageViewCaptcha.setOnClickListener(this);//æ¯æ¬¡ç‚¹å‡»éªŒè¯ç ï¼Œå°±è¿›è¡Œæ›´æ¢
+        mImageViewCaptcha.setOnClickListener(this);//Ã¿´Îµã»÷ÑéÖ¤Âë£¬¾Í½øĞĞ¸ü»»
 
     }
 
@@ -137,17 +137,17 @@ public class LoginInActivity extends Activity implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnLogin:
-                System.out.println("ç‚¹å‡»äº†ç™»å½•æŒ‰é’®");
+                System.out.println("µã»÷ÁËµÇÂ¼°´Å¥");
                 final String name = mNameEditText.getText().toString();
                 final String pwd = mPwdEditText.getText().toString();
                 if (name.equals("") || pwd.equals("")) {
-                    Toast.makeText(this, "ç”¨æˆ·åæˆ–å¯†ç ä¸èƒ½ä¸ºç©º", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "ÓÃ»§Ãû»òÃÜÂë²»ÄÜÎª¿Õ", Toast.LENGTH_SHORT).show();
                     return;
                 } else {
                     if (result != null) {
                         final String captchaValue = mEditTextCaptchaValue.getText().toString();
                         if (captchaValue.equals("")) {
-                            Toast.makeText(this, "éªŒè¯ç ä¸èƒ½ä¸ºç©º", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, "ÑéÖ¤Âë²»ÄÜÎª¿Õ", Toast.LENGTH_SHORT).show();
                             return;
                         } else {
                             login(name, pwd, captchaValue);
@@ -158,7 +158,7 @@ public class LoginInActivity extends Activity implements View.OnClickListener {
                 }
                 break;
             case R.id.btnExit:
-                System.out.print("ç‚¹å‡»äº†é€€å‡º");
+                System.out.print("µã»÷ÁËÍË³ö");
                 finish();
                 break;
             case R.id.ImageViewCaptcha:
@@ -168,11 +168,11 @@ public class LoginInActivity extends Activity implements View.OnClickListener {
     }
 
     /**
-     * ç™»å½•æ“ä½œ*/
+     * µÇÂ¼²Ù×÷*/
     private void login(final String name, final String pwd, final String captchaValue) {
-        //ç™»å½•çš„æ“ä½œ
-        System.out.print("è°ƒç”¨äº†login æ–¹æ³•");
-        progressDialog.setMessage("æ­£åœ¨ç™»å½•");
+        //µÇÂ¼µÄ²Ù×÷
+        System.out.print("µ÷ÓÃÁËlogin ·½·¨");
+        progressDialog.setMessage("ÕıÔÚµÇÂ¼");
         progressDialog.show();
         new Thread() {
             @Override

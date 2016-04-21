@@ -21,17 +21,17 @@ public class RequestGrantScope {
     private static final String SCOPE_EVENT_READ = "event_basic_r";
     private static final String SCOPE_EVENT_WRITE = "event_basic_w";
 
-    public static final RequestGrantScope SHUO_READ_SCOPE = new RequestGrantScope("DoubanShuoRead", RequestGrantScope.SCOPE_SHUO_READ, "è±†ç“£è¯´è¯»å–æƒé™");
-    public static final RequestGrantScope SHUO_WRITE_SCOPE = new RequestGrantScope("DoubanShuoWrite", RequestGrantScope.SCOPE_SHUO_WRITE, "è±†ç“£è¯´å†™å…¥æƒé™");
-    public static final RequestGrantScope BASIC_COMMON_SCOPE = new RequestGrantScope("BasicCommon", RequestGrantScope.SCOPE_BASIC_COMMON, "è±†ç“£åŸºæœ¬æƒé™");
-    public static final RequestGrantScope MAIL_READ_SCOPE = new RequestGrantScope("MailRead", RequestGrantScope.SCOPE_MAIL_READ, "è±†é‚®è¯»æƒé™");
-    public static final RequestGrantScope MAIL_WRITE_SCOPE = new RequestGrantScope("DoubanShuoWrite", RequestGrantScope.SCOPE_MAIL_WRITE, "è±†é‚®å†™æƒé™");
-    public static final RequestGrantScope BASIC_NOTE_SCOPE = new RequestGrantScope("BasicNote", RequestGrantScope.SCOPE_BASIC_NOTE, "æ—¥è®°è¯»å†™æƒé™");
-    public static final RequestGrantScope BOOK_READ_SCOPE = new RequestGrantScope("BookRead", RequestGrantScope.SCOPE_BOOK_READ, "è±†ç“£è¯»ä¹¦");
-    public static final RequestGrantScope MOVIE_READ_SCOPE = new RequestGrantScope("MovieRead", RequestGrantScope.SCOPE_MOVIE_READ, "è±†ç“£ç”µå½±");
-    public static final RequestGrantScope MUSIC_READ_SCOPE = new RequestGrantScope("MusicRead", RequestGrantScope.SCOPE_MUSIC_READ, "è±†ç“£éŸ³ä¹");
-    public static final RequestGrantScope EVENT_READ_SCOPE = new RequestGrantScope("EventRead", RequestGrantScope.SCOPE_EVENT_READ, "è±†ç“£åŒåŸè¯»æƒé™");
-    public static final RequestGrantScope EVENT_WRITE_SCOPE = new RequestGrantScope("EventWrite", RequestGrantScope.SCOPE_EVENT_WRITE, "è±†ç“£åŒåŸå†™æƒé™");
+    public static final RequestGrantScope SHUO_READ_SCOPE = new RequestGrantScope("DoubanShuoRead", RequestGrantScope.SCOPE_SHUO_READ, "¶¹°êËµ¶ÁÈ¡È¨ÏŞ");
+    public static final RequestGrantScope SHUO_WRITE_SCOPE = new RequestGrantScope("DoubanShuoWrite", RequestGrantScope.SCOPE_SHUO_WRITE, "¶¹°êËµĞ´ÈëÈ¨ÏŞ");
+    public static final RequestGrantScope BASIC_COMMON_SCOPE = new RequestGrantScope("BasicCommon", RequestGrantScope.SCOPE_BASIC_COMMON, "¶¹°ê»ù±¾È¨ÏŞ");
+    public static final RequestGrantScope MAIL_READ_SCOPE = new RequestGrantScope("MailRead", RequestGrantScope.SCOPE_MAIL_READ, "¶¹ÓÊ¶ÁÈ¨ÏŞ");
+    public static final RequestGrantScope MAIL_WRITE_SCOPE = new RequestGrantScope("DoubanShuoWrite", RequestGrantScope.SCOPE_MAIL_WRITE, "¶¹ÓÊĞ´È¨ÏŞ");
+    public static final RequestGrantScope BASIC_NOTE_SCOPE = new RequestGrantScope("BasicNote", RequestGrantScope.SCOPE_BASIC_NOTE, "ÈÕ¼Ç¶ÁĞ´È¨ÏŞ");
+    public static final RequestGrantScope BOOK_READ_SCOPE = new RequestGrantScope("BookRead", RequestGrantScope.SCOPE_BOOK_READ, "¶¹°ê¶ÁÊé");
+    public static final RequestGrantScope MOVIE_READ_SCOPE = new RequestGrantScope("MovieRead", RequestGrantScope.SCOPE_MOVIE_READ, "¶¹°êµçÓ°");
+    public static final RequestGrantScope MUSIC_READ_SCOPE = new RequestGrantScope("MusicRead", RequestGrantScope.SCOPE_MUSIC_READ, "¶¹°êÒôÀÖ");
+    public static final RequestGrantScope EVENT_READ_SCOPE = new RequestGrantScope("EventRead", RequestGrantScope.SCOPE_EVENT_READ, "¶¹°êÍ¬³Ç¶ÁÈ¨ÏŞ");
+    public static final RequestGrantScope EVENT_WRITE_SCOPE = new RequestGrantScope("EventWrite", RequestGrantScope.SCOPE_EVENT_WRITE, "¶¹°êÍ¬³ÇĞ´È¨ÏŞ");
 
 
 
