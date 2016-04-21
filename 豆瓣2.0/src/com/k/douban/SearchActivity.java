@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import android.app.Activity;
 import android.content.*;
 //import com.google.gdata.data.douban.Attribute;
 //import com.google.gdata.data.douban.CollectionEntry;
@@ -23,8 +24,12 @@ import android.content.*;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.AnimationSet;
+import android.view.animation.ScaleAnimation;
 import android.widget.*;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView.OnItemClickListener;
@@ -37,11 +42,19 @@ import douban.model.subject.DoubanSubjectObj;
 import douban.playground.service.DoubanBookMovieMusicServiceTest;
 import douban.playground.service.DoubanCollectionServiceTest;
 
-public class SearchActivity extends BaseActivity implements OnItemClickListener {
-    private String key = "你好";
+
+/**
+ * 点击button时候 调用线程 传入key*/
+public class SearchActivity extends Activity implements OnItemClickListener {
+    public TextView mTextViewTitle;//最上面的title
+    public RelativeLayout mRelativeLoading; //加载条
+    //	public DoubanService myService;
+    public ImageButton mImageBack;
+    private String key = null;
     private ListView subjectlist;
     private SharedPreferences sharedPreferences;
-    private ImageButton back_button;
+    private EditText search_text;
+    private ImageButton back_button, search_button;
     MyReadAdapter adapter;
     // Map<String,Bitmap> iconCache;
     Map<String, SoftReference<Bitmap>> iconCache;
@@ -51,6 +64,8 @@ public class SearchActivity extends BaseActivity implements OnItemClickListener 
     boolean isloading = false;
     IntentFilter filter;
     KillReceiver receiver ;
+    Handler myhandler = new Handler();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 //        setContentView(R.layout.subject);
@@ -61,12 +76,13 @@ public class SearchActivity extends BaseActivity implements OnItemClickListener 
         // 初始化内存缓存
         iconCache = new HashMap<String, SoftReference<Bitmap>>();
         back_button = (ImageButton) findViewById(R.id.back_button);
+        search_button = (ImageButton) findViewById(R.id.search_button);
+        search_text = (EditText) findViewById(R.id.search_text);
         back_button.setOnClickListener(mGoBack);
-
-
+        search_button.setOnClickListener(mSearch);
     }
 
-    @Override
+
     public void setupView() {
         System.out.println("setupView()");
         mRelativeLoading = (RelativeLayout) this.findViewById(R.id.loading);
@@ -78,7 +94,7 @@ public class SearchActivity extends BaseActivity implements OnItemClickListener 
         this.registerReceiver(receiver, filter);
     }
 
-    @Override
+
     public void setListener() {
         subjectlist.setOnItemClickListener(this);
         subjectlist.setOnScrollListener(new OnScrollListener() {
@@ -119,12 +135,11 @@ public class SearchActivity extends BaseActivity implements OnItemClickListener 
         });
     }
 
-    @Override
+
     public void fillData() {
         System.out.println("fillData()");
         // 通过异步任务 获取数据 然后显示到界面上
         new AsyncTask<Void, Void, List<Book>>() {
-
             @Override
             protected void onPreExecute() {
                 System.out.println("onPreExecute()");
@@ -165,9 +180,10 @@ public class SearchActivity extends BaseActivity implements OnItemClickListener 
                     sharedPreferences=getSharedPreferences("config", Context.MODE_PRIVATE);
                     String userid=sharedPreferences.getString("userid", "");
                     List<Book> Bookes = new ArrayList<Book>();
+//                    Bookes.clear();
                     //DoubanCollectionFeedObj result1=doubanCollectionServiceTest.testGetUsersCollection_8args(startindex, count, userid);
 //                    String key="c语言";
-                    System.out.println("開始搜索");
+                    System.out.println("开始搜索");
                     DoubanSubjectFeedObj result1=doubanBookMovieMusicServiceTest.testSearchBook_String_String(key);
                     for (DoubanSubjectObj col : result1.getSubjects()) {
                         Book Book = new Book();
@@ -177,12 +193,13 @@ public class SearchActivity extends BaseActivity implements OnItemClickListener 
                         String updated="2015-12-12";
 
                         String subjectUrl=col.getLinks().get(1).getHref();
-//						System.out.println("subjectUrl:"+subjectUrl);
+						System.out.println("subjectUrl:"+subjectUrl);
                         String[] url = subjectUrl.split("/");
                         String subjectId = url[4];
 //                        int start = subjectUrl.lastIndexOf("/")+1;
 //                        int end=subjectUrl.length();
 //                        String subjectId = subjectUrl.substring(start, end);
+                        System.out.println("subjectId======================" + subjectId);
                         String summary=col.getSummary();
 
                         try {
@@ -233,6 +250,7 @@ public class SearchActivity extends BaseActivity implements OnItemClickListener 
         }.execute();
     }
 
+
     //点击每个条目所对应的点击事件
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         System.out.println("点击条目");
@@ -247,9 +265,7 @@ public class SearchActivity extends BaseActivity implements OnItemClickListener 
 
         private List<Book> books;
 
-        public MyReadAdapter(List<Book> books) {
-            this.books = books;
-        }
+        public MyReadAdapter(List<Book> books) {this.books = books;}
 
         public void addMoreBook(List<Book> books) {
             for (Book book : books) {
@@ -257,20 +273,11 @@ public class SearchActivity extends BaseActivity implements OnItemClickListener 
             }
         }
 
-        public int getCount() {
+        public int getCount() {return books.size();}
 
-            return books.size();
-        }
+        public Object getItem(int position) {return books.get(position);}
 
-        public Object getItem(int position) {
-            // TODO Auto-generated method stub
-            return books.get(position);
-        }
-
-        public long getItemId(int position) {
-            // TODO Auto-generated method stub
-            return position;
-        }
+        public long getItemId(int position) {return position;}
 
         public View getView(int position, View convertView, ViewGroup parent) {
             View view = View.inflate(SearchActivity.this, R.layout.book_item, null);
@@ -380,464 +387,71 @@ public class SearchActivity extends BaseActivity implements OnItemClickListener 
             finish();
         }
     };
+
+    public View.OnClickListener mSearch = new View.OnClickListener() {
+        public void onClick(View v) {
+
+            key = search_text.getText().toString();
+            System.out.println("key=========" + key);
+//            myhandler.post(eChanged);
+//            clearList(Bookes);
+            setupView();
+            setListener() ;
+            fillData();
+//            search_text.setText(" ");
+            //调用线程填充数据
+//            adapter.notifyDataSetChanged();
+        }
+    };
+    public void clearList(List<Book> f) {
+        int size = f.size();
+        if (size > 0) {
+            f.removeAll(f);
+            adapter.notifyDataSetChanged();
+        }
+    }
+
+    Runnable eChanged = new Runnable() {
+
+        @Override
+        public void run() {
+            // TODO Auto-generated method stub
+
+        }
+    };
+
+
+    public  void showLoading(){
+        mRelativeLoading.setVisibility(View.VISIBLE);
+        AlphaAnimation aa = new AlphaAnimation(0.0f, 1.0f);
+        aa.setDuration(1000);
+        ScaleAnimation sa = new ScaleAnimation(0.0f, 1.0f, 0.0f, 1.0f);
+        sa.setDuration(1000);
+        AnimationSet set = new AnimationSet(false);
+        set.addAnimation(sa);
+        set.addAnimation(aa);
+        mRelativeLoading.setAnimation(set);
+        mRelativeLoading.startAnimation(set);
+    }
+    public  void hideLoading(){
+        AlphaAnimation aa = new AlphaAnimation(1.0f, 0.0f);
+        aa.setDuration(1000);
+        ScaleAnimation sa = new ScaleAnimation(1.0f, 0.0f, 1.0f,0.0f);
+        sa.setDuration(1000);
+        AnimationSet set = new AnimationSet(false);
+        set.addAnimation(sa);
+        set.addAnimation(aa);
+        mRelativeLoading.setAnimation(set);
+        mRelativeLoading.startAnimation(set);
+        mRelativeLoading.setVisibility(View.INVISIBLE);
+    }
+
+    public void showToast(String text){
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+    }
+
 }
 
 
 
 
-
-//package com.k.douban;
-//
-//import java.lang.ref.SoftReference;
-//import java.util.ArrayList;
-//import java.util.List;
-//import java.util.Map;
-//
-//import android.content.Intent;
-//import android.content.SharedPreferences;
-//import android.graphics.Bitmap;
-//import android.os.AsyncTask;
-//import android.os.Bundle;
-//import android.preference.PreferenceManager;
-//import android.view.*;
-//
-//import android.widget.*;
-//
-//import com.k.douban.util.LoadImageAsynTask;
-//import com.k.douban.util.NetUtil;
-//import com.k.douban.domain.SearchBook
-//
-//
-//public class SearchActivity extends BaseActivity implements AdapterView.OnItemClickListener{
-//    private ListView subjectlist;
-//    Map<String, SoftReference<Bitmap>> iconCache;
-//    List<SearchBook> SearchBooks;
-//    NewBookAdapter adapter;
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//
-//        setContentView(R.layout.search_content);
-//        super.onCreate(savedInstanceState);
-//    }
-//
-//    @Override
-//    public void setupView() {
-//        mRelativeLoading = (RelativeLayout) this.findViewById(R.id.loading);
-//        subjectlist = (ListView) this.findViewById(R.id.list);
-//
-//    }
-//
-//    @Override
-//    public void setListener() {
-//        subjectlist.setOnItemClickListener(this);
-//    }
-//
-//    @Override
-//    public void fillData() {
-//
-//        new AsyncTask<Void, Void, Boolean>() {
-//
-//            @Override
-//            protected Boolean doInBackground(Void... params) {
-//
-//                try {
-//                    SearchBooks = NetUtil.getNewBooks(getApplicationContext());
-//                    return true;
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                    return false;
-//                }
-//
-//            }
-//
-//            @Override
-//            protected void onPreExecute() {
-//                super.onPreExecute();
-//                showLoading();
-//            }
-//
-//            @Override
-//            protected void onPostExecute(Boolean result) {
-//                hideLoading();
-//                super.onPostExecute(result);
-//                if(result){
-//                    //设置数据适配器
-//                    if(adapter==null){
-//                        adapter = new NewBookAdapter();
-//                        subjectlist.setAdapter(adapter);
-//                    }else{
-//                        adapter.notifyDataSetChanged();
-//                    }
-//                }else{
-//                    showToast("数据获取 失败,请检查网络");
-//                }
-//            }
-//
-//        }.execute();
-//
-//    }
-//
-//    private class NewBookAdapter extends BaseAdapter {
-//
-//        public int getCount() {
-//
-//            return SearchBooks.size();
-//        }
-//
-//        public Object getItem(int position) {
-//            // TODO Auto-generated method stub
-//            return SearchBooks.get(position);
-//        }
-//
-//        public long getItemId(int position) {
-//            // TODO Auto-generated method stub
-//            return position;
-//        }
-//
-//        public View getView(int position, View convertView, ViewGroup parent) {
-//            SearchBooks searchBook = searchBook.get(position);
-//            View view;
-//            if(convertView==null){
-//                view = View.inflate(SearchActivity.this, R.layout.new_book_item, null);
-//            }else{
-//                view = convertView;
-//            }
-//            final ImageView iv = new ImageView(SearchActivity.this);
-//            //RatingBar rb = new RatingBar(NewBookActivity.this);
-//            RatingBar rb = new RatingBar(SearchActivity.this, null, android.R.attr.ratingBarStyleSmall);
-//            rb.setMax(5);
-//            rb.setProgress(4);
-//
-//            LinearLayout ll = (LinearLayout) view.findViewById(R.id.ll_book_image);
-//            //清空ll的里面的view对象
-//            ll.removeAllViews();
-//
-//            ll.addView(iv, new ViewGroup.LayoutParams(60, 60));
-//            ll.addView(rb,new ViewGroup.LayoutParams(60, ViewGroup.LayoutParams.WRAP_CONTENT));
-//            TextView tv_title = (TextView) view.findViewById(R.id.book_title);
-//            TextView tv_description = (TextView) view
-//                    .findViewById(R.id.book_description);
-//
-//            rb.setRating(4.0f);
-//            tv_title.setText(searchBook.getName());
-//            tv_description.setText(searchBook.getDescription());
-//            SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-//            boolean canloadicon = sp.getBoolean("canloadicon", false);
-//            if(canloadicon){
-//                LoadImageAsynTask task = new LoadImageAsynTask(new LoadImageAsynTask.LoadImageAsynTaskCallback() {
-//
-//                    public void beforeLoadImage() {
-//                        System.out.println("beforeLoadImage");
-//                        iv.setImageResource(R.drawable.book);
-//                    }
-//
-//                    public void afterLoadImage(Bitmap bitmap) {
-//                        System.out.println("afterLoadImage");
-//                        if(bitmap!=null){
-//                            iv.setImageBitmap(bitmap);
-//                        }else{
-//                            iv.setImageResource(R.drawable.book);
-//                        }
-//
-//                    }
-//                });
-//                task.execute(searchBook.getIconpath());
-//            }else{
-//                iv.setImageResource(R.drawable.book);
-//            }
-//            return view;
-//        }
-//
-//    }
-//
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        menu.add(0, 0, 0, "设置界面");
-//        return super.onCreateOptionsMenu(menu);
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        Intent intent = new Intent(this,SettingActivity.class);
-//        startActivity(intent);
-//        return super.onOptionsItemSelected(item);
-//    }
-//
-//
-//    //点击每个条目所对应的点击事件
-//    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//        System.out.println("点击条目");
-//        SearchBook searchBook =(searchBook) subjectlist.getItemAtPosition(position);
-//        System.out.println("就发觉看法哈的vnzcv"+searchBook.getId());
-//        Intent intent = new Intent(this,BookDetailActivity.class);
-//        intent.putExtra("SubjectId", searchBook.getId());
-//        startActivity(intent);
-//
-//    }
-//}
-////
-//////	private List<Subject> books = new ArrayList<Subject>();
-////////	private List<Subject> movies = new ArrayList<Subject>();
-////////	private List<Subject> musics = new ArrayList<Subject>();
-//////
-//////	private ViewFlipper viewFlipper;
-//////
-//////	private GestureDetector mGestureDetector;
-//////	private static final int SWIPE_MAX_OFF_PATH = 100;
-//////
-//////	private static final int SWIPE_MIN_DISTANCE = 100;
-//////
-//////	private static final int SWIPE_THRESHOLD_VELOCITY = 100;
-//////
-//////	private int bookIndex = 1;
-//////	private int movieIndex = 1;
-//////	private int musicIndex = 1;
-//////	private int count = 10; // 每次获取数目
-//////	private boolean isFilling = false; // 判断是否正在获取数据
-//////	protected SubjectListAdapter bookListAdapter;
-//////
-//////	private int bookTotal; // 最大条目数
-//////	private int movieTotal; // 最大条目数
-//////	private int musicTotal; // 最大条目数
-//////
-//////	@Override
-//////	public void onCreate(Bundle savedInstanceState) {
-//////		super.onCreate(savedInstanceState);
-//////		requestWindowFeature(Window.FEATURE_NO_TITLE);
-//////
-//////		setContentView(R.layout.search);
-//////
-//////		initView(R.id.search_book, R.string.book_search_hint, "book");
-//////		initView(R.id.search_movie, R.string.movie_search_hint, "movie");
-//////		initView(R.id.search_music, R.string.music_search_hint, "music");
-//////
-//////		viewFlipper = (ViewFlipper) findViewById(R.id.flipper);
-//////
-//////		mGestureDetector = new GestureDetector(
-//////				new GestureDetector.SimpleOnGestureListener() {
-//////					public boolean onFling(MotionEvent e1, MotionEvent e2,
-//////							float velocityX, float velocityY) {
-//////						if (Math.abs(e1.getY() - e2.getY()) > SWIPE_MAX_OFF_PATH)
-//////							return false;
-//////
-//////						if ((e1.getX() - e2.getX()) > SWIPE_MIN_DISTANCE
-//////								&& Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
-//////							viewFlipper.setInAnimation(AnimationUtils
-//////									.loadAnimation(SearchActivity.this,
-//////											R.anim.push_right_in));
-//////							viewFlipper.setOutAnimation(AnimationUtils
-//////									.loadAnimation(SearchActivity.this,
-//////											R.anim.push_left_out));
-//////							viewFlipper.showNext();
-//////						} else if ((e2.getX() - e1.getX()) > SWIPE_MIN_DISTANCE
-//////								&& Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
-//////							viewFlipper.setInAnimation(AnimationUtils
-//////									.loadAnimation(SearchActivity.this,
-//////											R.anim.push_left_in));
-//////							viewFlipper.setOutAnimation(AnimationUtils
-//////									.loadAnimation(SearchActivity.this,
-//////											R.anim.push_right_out));
-//////							viewFlipper.showPrevious();
-//////						}
-//////						return true;
-//////					}
-//////				});
-//////
-//////	}
-//////
-//////	private void initView(int layoutId, int hintId, final String cat) {
-//////		final View searchView = findViewById(layoutId);
-//////		EditText searchText = (EditText) searchView
-//////				.findViewById(R.id.search_text);
-//////		searchText.setHint(hintId);
-//////		ImageButton searchButton = (ImageButton) searchView
-//////				.findViewById(R.id.search_button);
-//////		searchView.setTag(cat);
-//////
-//////		searchButton.setOnClickListener(new OnClickListener() {
-//////			public void onClick(View view) {
-//////				doSearch(searchView, cat);
-//////			}
-//////		});
-//////
-//////		TextView titleView = (TextView) searchView.findViewById(R.id.myTitle);
-//////		if (Subject.BOOK.equals(cat)) {
-//////			titleView.setText("图书搜索");
-//////		}
-//////
-//////
-//////		ListView listView = (ListView) searchView
-//////				.findViewById(android.R.id.list);
-//////		if (Subject.BOOK.equals(cat)) {
-//////			listView.setOnItemClickListener(new OnItemClickListener() {
-//////				public void onItemClick(AdapterView<?> parent, View view,
-//////						int position, long id) {
-//////					Intent i = new Intent(SearchActivity.this,
-//////							SubjectViewActivity.class);
-//////					Subject subject = books.get(position);
-//////					i.putExtra("subject", subject);
-//////					startActivity(i);
-//////
-//////				}
-//////			});
-//////		}
-//////
-//////		listView.setOnScrollListener(new OnScrollListener() {
-//////
-//////			public void onScroll(AbsListView arg0, int arg1, int arg2, int arg3) {
-//////
-//////			}
-//////
-//////			public void onScrollStateChanged(AbsListView view, int scrollState) {
-//////				if (scrollState == OnScrollListener.SCROLL_STATE_IDLE) {
-//////					// 判断滚动到底部
-//////					if (view.getLastVisiblePosition() == (view.getCount() - 1)) {
-//////						loadRemnantListItem(searchView);
-//////					}
-//////				}
-//////			}
-//////		});
-//////
-//////	}
-//////
-//////	// 获取更多条目
-//////	private void loadRemnantListItem(View searchView) {
-//////		if (isFilling) {
-//////			return;
-//////		}
-//////		String cat = (String) searchView.getTag();
-//////		if (Subject.BOOK.equals(cat)) {
-//////			bookIndex = bookIndex + count;
-//////			if (bookIndex > bookTotal) {
-//////				return;
-//////			}
-//////		} else if (Subject.MOVIE.equals(cat)) {
-//////			movieIndex = movieIndex + count;
-//////			if (movieIndex > movieTotal) {
-//////				return;
-//////			}
-//////		} else if (Subject.MUSIC.equals(cat)) {
-//////			musicIndex = musicIndex + count;
-//////			if (musicIndex > musicTotal) {
-//////				return;
-//////			}
-//////		}
-//////		RelativeLayout loading = (RelativeLayout) searchView
-//////				.findViewById(R.id.loading);
-//////		LayoutParams lp = (LayoutParams) loading.getLayoutParams();
-//////		lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-//////		loading.setLayoutParams(lp);
-//////
-//////		fillData(searchView, cat);
-//////	}
-//////
-//////
-//////	private void doSearch(final View searchView, final String cat) {
-//////		EditText searchText = (EditText) searchView
-//////				.findViewById(R.id.search_text);
-//////
-//////		String searchTitle = searchText.getText().toString();
-//////		if ("".equals(searchTitle.trim())) {
-//////			return;
-//////		}
-//////		if (Subject.BOOK.equals(cat)) {
-//////			bookIndex = 1;
-//////			bookListAdapter = null;
-//////			books.clear();
-//////		} else if (Subject.MOVIE.equals(cat)) {
-//////			movieIndex = 1;
-//////			movieListAdapter = null;
-//////			movies.clear();
-//////		} else if (Subject.MUSIC.equals(cat)) {
-//////			musicIndex = 1;
-//////			musicListAdapter = null;
-//////			musics.clear();
-//////		}
-//////		fillData(searchView, cat);
-//////	}
-//////
-//////	private void fillData(final View searchView, final String cat) {
-//////		new AsyncTask<View, Void, SubjectFeed>() {
-//////
-//////			@Override
-//////			protected SubjectFeed doInBackground(View... args) {
-//////				View searchView = args[0];
-//////				String cat = (String) searchView.getTag();
-//////				EditText searchText = (EditText) searchView
-//////						.findViewById(R.id.search_text);
-//////
-//////				String title = searchText.getText().toString();
-//////				SubjectFeed feed = null;
-//////				try {
-//////					if (Subject.BOOK.equals(cat)) {
-//////						feed = NetUtil.getDoubanService().findBook(title, "",
-//////								bookIndex, count);
-//////						bookTotal = feed.getTotalResults();
-//////					} else if (Subject.MOVIE.equals(cat)) {
-//////						feed = NetUtil.getDoubanService().findMovie(title, "",
-//////								movieIndex, count);
-//////						movieTotal = feed.getTotalResults();
-//////					} else if (Subject.MUSIC.equals(cat)) {
-//////						feed = NetUtil.getDoubanService().findMusic(title, "",
-//////								musicIndex, count);
-//////						musicTotal = feed.getTotalResults();
-//////					}
-//////				} catch (Exception e) {
-//////					e.printStackTrace();
-//////				}
-//////				return feed;
-//////			}
-//////
-//////			@Override
-//////			protected void onPostExecute(SubjectFeed result) {
-//////				super.onPostExecute(result);
-//////				closeProgressBar(searchView);
-//////				if (result != null) {
-//////					ListView listView = (ListView) searchView
-//////							.findViewById(android.R.id.list);
-//////					if (Subject.BOOK.equals(cat)) {
-//////						books.addAll(ConvertUtil.ConvertSubjects(result, cat));
-//////						if (bookListAdapter == null) {
-//////							bookListAdapter = new SubjectListAdapter(
-//////									SearchActivity.this, listView, books);
-//////							listView.setAdapter(bookListAdapter);
-//////						} else {
-//////							bookListAdapter.notifyDataSetChanged();
-//////						}
-//////					} else if (Subject.MOVIE.equals(cat)) {
-//////						movies.addAll(ConvertUtil.ConvertSubjects(result, cat));
-//////						if (movieListAdapter == null) {
-//////							movieListAdapter = new SubjectListAdapter(
-//////									SearchActivity.this, listView, movies);
-//////							listView.setAdapter(movieListAdapter);
-//////						} else {
-//////							movieListAdapter.notifyDataSetChanged();
-//////						}
-//////					} else if (Subject.MUSIC.equals(cat)) {
-//////						musics.addAll(ConvertUtil.ConvertSubjects(result, cat));
-//////						if (musicListAdapter == null) {
-//////							musicListAdapter = new SubjectListAdapter(
-//////									SearchActivity.this, listView, musics);
-//////							listView.setAdapter(musicListAdapter);
-//////						} else {
-//////							musicListAdapter.notifyDataSetChanged();
-//////						}
-//////					}
-//////
-//////				}
-//////				isFilling = false;
-//////			}
-//////
-//////			@Override
-//////			protected void onPreExecute() {
-//////				super.onPreExecute();
-//////				isFilling = true;
-//////				showProgressBar(searchView);
-//////
-//////			}
-//////
-//////		}.execute(searchView);
-//////	}
-//////
-//////}

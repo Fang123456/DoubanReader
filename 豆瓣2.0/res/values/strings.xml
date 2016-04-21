@@ -17,7 +17,7 @@
     <string name="setting">设置界面</string>
     <string name="book_detail">数目信息</string>
     <string name="search">搜索</string>
-    <string name="search_hint">书名、作者、ISBN</string>
+    <string name="search_hint">书名</string>
     <string name="about">关于</string>
 
 
