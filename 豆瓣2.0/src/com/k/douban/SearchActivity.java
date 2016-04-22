@@ -200,7 +200,8 @@ public class SearchActivity extends Activity implements OnItemClickListener {
 //                        int end=subjectUrl.length();
 //                        String subjectId = subjectUrl.substring(start, end);
                         System.out.println("subjectId======================" + subjectId);
-                        String summary=col.getSummary();
+//                        String summary=col.getSummary();
+                        String summary=" ";
 
                         try {
                             Long l_subjectId=Long.valueOf(subjectId);

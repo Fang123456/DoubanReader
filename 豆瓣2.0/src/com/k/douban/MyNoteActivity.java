@@ -58,6 +58,8 @@ public class MyNoteActivity extends BaseActivity implements OnClickListener {
 		back_button.setOnClickListener(mGoBack);
 	}
 
+	/**
+	 * 返回监听*/
 	public View.OnClickListener mGoBack = new View.OnClickListener() {
 		public void onClick(View v) {
 			finish();
@@ -73,6 +75,8 @@ public class MyNoteActivity extends BaseActivity implements OnClickListener {
 
 	}
 
+	/**
+	 * 翻页监听*/
 	@Override
 	public void setListener() {
 		bt_next.setOnClickListener(this);
@@ -296,7 +300,7 @@ public class MyNoteActivity extends BaseActivity implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.bt_next:
-			startindex+=count;
+			startindex += count;
 			if(startindex>100){
 				showToast("最多获取100条");
 				return ;

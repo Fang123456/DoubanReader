@@ -31,11 +31,12 @@ public class MainTabActivity extends TabActivity {
 
 //        mtabHost.addTab(tab3Spec());//书评
 
-        mtabHost.addTab(tab5Spec());//关于---后期做成书架
+
         mtabHost.addTab(tab2Spec());//新书
         mtabHost.addTab(tab4Spec());//搜索
         mtabHost.addTab(tab1Spec());//我的豆瓣
-        mtabHost.setCurrentTabByTag("five"); //设置默认目录
+        mtabHost.addTab(tab5Spec());//关于---后期做成书架
+        mtabHost.setCurrentTabByTag("two"); //设置默认目录
     }
 
 
@@ -139,11 +140,11 @@ public class MainTabActivity extends TabActivity {
     * 设置tab5的标签和内容*/
     private TabHost.TabSpec tab5Spec() {
         TabHost.TabSpec tabSpec = mtabHost.newTabSpec("five");
-//        Intent intent = new Intent(MainTabActivity.this, AboutActivity.class);
-        Intent intent = new Intent(MainTabActivity.this, BookshelfActivity.class);
+        Intent intent = new Intent(MainTabActivity.this, AboutActivity.class);
+//        Intent intent = new Intent(MainTabActivity.this, BookshelfActivity.class);
         tabSpec.setContent(intent);
         //自定义设置标签（View）内容
-        tabSpec.setIndicator(getTab5View("书架", R.drawable.tab_main_nav_fav_selector));//tab5(关于)
+        tabSpec.setIndicator(getTab5View("关于", R.drawable.tab_main_nav_fav_selector));//tab5(关于)
         return tabSpec;
     }
 

@@ -63,11 +63,11 @@ public class MeActivity extends Activity implements AdapterView.OnItemClickListe
 //                    Intent  myReadIntent = new Intent(MeActivity.this,MyReadActivity.class);
 //                    startActivity(myReadIntent);
 //                    break;
-                case 2://我的日记
+                case 1://我的日记
                     Intent  myNoteIntent = new Intent(MeActivity.this,MyNoteActivity.class);
                     startActivity(myNoteIntent);
                     break;
-                case 3://我的资料
+                case 2://我的资料
                     Intent myInfoIntent = new Intent(MeActivity.this, MyInfoActivity.class);
                     startActivity(myInfoIntent);
                     break;
