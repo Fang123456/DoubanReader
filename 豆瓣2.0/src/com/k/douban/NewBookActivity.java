@@ -47,7 +47,6 @@ public class NewBookActivity extends BaseActivity implements AdapterView.OnItemC
 		subjectlist = (ListView) this.findViewById(R.id.subjectlist);
 
 	}
-
 	@Override
 	public void setListener() {
 		subjectlist.setOnItemClickListener(this);
@@ -190,7 +189,7 @@ public class NewBookActivity extends BaseActivity implements AdapterView.OnItemC
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 		System.out.println("点击条目");
 		NewBook newbook =(NewBook) subjectlist.getItemAtPosition(position);
-		System.out.println("就发觉看法哈的vnzcv"+newbook.getId());
+		System.out.println("newbook的id为："+newbook.getId());
 		Intent intent = new Intent(this,BookDetailActivity.class);
 		intent.putExtra("SubjectId", newbook.getId());
 		startActivity(intent);
